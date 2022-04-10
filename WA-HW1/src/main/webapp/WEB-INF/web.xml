@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="hello-world-webapp" version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <display-name>HW1-2022</display-name>
+    <description>HW1 - backend of the tutor's project</description>
+    <welcome-file-list>
+        <welcome-file>/jsp/homepage.jsp</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/html/protected/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/html/admin-area/*</url-pattern>
+        <url-pattern>/schema/roles/*</url-pattern>
+        <url-pattern>/protected/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>BuilderFilter</filter-name>
+        <filter-class>filter.BuilderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>BuilderFilter</filter-name>
+        <url-pattern>/html/builder-area/*</url-pattern>
+        <url-pattern>/schema/devicetypes/*</url-pattern>
+        <url-pattern>/park/editable/*</url-pattern>
+        <url-pattern>/park/edit/*</url-pattern>
+        <url-pattern>/model/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>MaintainerFilter</filter-name>
+        <filter-class>filter.MaintainerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MaintainerFilter</filter-name>
+        <url-pattern>/html/maintainer-area/*</url-pattern>
+        <url-pattern>/schema/eventcategories/*</url-pattern>
+        <url-pattern>/schema/sessiontypes/*</url-pattern>
+        <url-pattern>/maintainer-area/*</url-pattern>
+        <url-pattern>/ride/*</url-pattern>
+        <url-pattern>/maintenance/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>JWTFilter</filter-name>
+        <filter-class>filter.TokenFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JWTFilter</filter-name>
+        <url-pattern>/token/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>JWTServlet</servlet-name>
+        <servlet-class>servlet.TokenVisualizerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JWTServlet</servlet-name>
+        <url-pattern>/token/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SchemaServlet</servlet-name>
+        <servlet-class>servlet.SchemaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SchemaServlet</servlet-name>
+        <url-pattern>/schema/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ParkServlet</servlet-name>
+        <servlet-class>servlet.ParkServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParkServlet</servlet-name>
+        <url-pattern>/park/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ModelServlet</servlet-name>
+        <servlet-class>servlet.ModelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModelServlet</servlet-name>
+        <url-pattern>/model/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MaintenanceServlet</servlet-name>
+        <servlet-class>servlet.MaintenanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MaintenanceServlet</servlet-name>
+        <url-pattern>/maintenance/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <servlet-class>servlet.RestDispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RestDispatcherServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+
+    </servlet-mapping>
+</web-app>

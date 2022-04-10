@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+<Appenders>
+    <RollingFile name="MyFile" fileName="${sys:catalina.home}/logs/logFile.log" filePattern="${sys:catalina.home}/logs/logFile-%d{MM-dd-yyyy}.log" immediateFlush="true">
+        <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <TimeBasedTriggeringPolicy />
+    </RollingFile>
+</Appenders>
+<Loggers>
+    <Root level="all">
+        <AppenderRef ref="MyFile"/>
+    </Root>
+</Loggers>
+</Configuration>
