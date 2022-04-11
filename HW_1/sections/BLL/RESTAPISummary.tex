@@ -1,0 +1,186 @@
+\subsection{REST API Summary}
+
+%describe the REST API. If needed, add a few lines of text here, describing the content of the table.
+
+
+The list of the rest API for this homework are still “in progress” because we have to decide according
+to the frontend where is better to use a REST call or not.
+Anyway, there are some resources that are just available with REST that are reported in the next
+table.
+\\
+\\
+The rest API is studied to experiment with multiple different approaches to the REST paradigm. More in detail,
+endpoints associated with rides and devices are developed in a more traditional way, with the entirety of the
+information needed to satisfy the request directly in the URI. Other endpoints require additional information
+(such as the type of operation required) as additional parameters in the request.
+\\
+\\
+Part of the URIs are filtered through different filters. S indicates that only users with the role of student
+can access to the endpoint, T indicates that only T can access the endpoint, A that only administrators
+can request the specified URI to the server.
+\\
+
+
+\begin{longtable}{|p{.375\columnwidth}|p{.1\columnwidth} |p{.35\columnwidth}|p{.1\columnwidth}|} 
+
+\hline
+\textbf{URI} & \textbf{Method} & \textbf{Description} & \textbf{Filter} \\
+
+\hline
+    %URI
+admin/   
+&   % Method
+POST
+&   %Description
+Go to the administrator section. Only admin can see access the infomation
+&   %ROLE
+A\\
+\hline
+
+\hline
+    %URI
+admin/dashboard/
+&   % Method
+POST
+&   %Description
+Go to the administrator dashboard. Only admin login.
+&   %ROLE
+A\\
+\hline
+
+\hline
+    %URI
+login/   
+&   % Method
+POST
+&   %Description
+Go to login section for teacher and students only
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+register/   
+&   % Method
+POST
+&   %Description
+Go to registration section for teacher and students only
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+home/   
+&   % Method
+POST
+&   %Description
+Go to homepage
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+about-us/   
+&   % Method
+POST
+&   %Description
+Go to about us
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+contact-us/   
+&   % Method
+POST
+&   %Description
+Go to contact us
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+(user)/dashboard/
+&   % Method
+GET
+&   %Description
+Go to the administrator dashboard. Student and teacher can see access the infomation.
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+(user)/search/(course-name)
+&   % Method
+GET
+&   %Description
+Search for the course
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+(user)/(course-id) 
+&   % Method
+GET
+&   %Description
+Go to the course for information
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+(user)/(course-id)/enroll
+&   % Method
+POST
+&   %Description
+Enroll in a course
+&   %ROLE
+S\\
+\hline
+
+\hline
+    %URI
+(user)/(course-id)/unenroll
+&   % Method
+POST
+&   %Description
+Un-enroll in a course
+&   %ROLE
+S\\
+\hline
+
+\hline
+    %URI
+teacher/(course-id)/post
+&   % Method
+GET
+&   %Description
+Post material for a course
+&   %ROLE
+T\\
+\hline
+
+\hline
+    %URI
+student/(teacher-id)/message
+&   % Method
+POST
+&   %Description
+Message a teacher
+&   %ROLE
+T\\
+\hline
+
+
+\caption{Describe in this table your REST API}
+\label{tab:termGlossary}
+\end{longtable}
