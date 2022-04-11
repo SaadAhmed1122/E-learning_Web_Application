@@ -54,14 +54,58 @@ login/
 &   % Method
 POST
 &   %Description
-Go to login setion for teacher and students only
+Go to login section for teacher and students only
 &   %ROLE
 S and T\\
 \hline
 
 \hline
     %URI
-user/dashboard/
+register/   
+&   % Method
+POST
+&   %Description
+Go to registration section for teacher and students only
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+home/   
+&   % Method
+POST
+&   %Description
+Go to homepage
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+about-us/   
+&   % Method
+POST
+&   %Description
+Go to about us
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+contact-us/   
+&   % Method
+POST
+&   %Description
+Go to contact us
+&   %ROLE
+S and T\\
+\hline
+
+\hline
+    %URI
+(user)/dashboard/
 &   % Method
 GET
 &   %Description
@@ -72,7 +116,7 @@ S and T\\
 
 \hline
     %URI
-user/search/(course-name)
+(user)/search/(course-name)
 &   % Method
 GET
 &   %Description
@@ -83,7 +127,7 @@ S and T\\
 
 \hline
     %URI
-user/(course-id) 
+(user)/(course-id) 
 &   % Method
 GET
 &   %Description
@@ -94,7 +138,7 @@ S and T\\
 
 \hline
     %URI
-user/(course-id)/enroll
+(user)/(course-id)/enroll
 &   % Method
 POST
 &   %Description
@@ -105,28 +149,35 @@ S\\
 
 \hline
     %URI
-user/(course-id)/(forum-id)
+(user)/(course-id)/unenroll
 &   % Method
 POST
 &   %Description
-Enroll in a course
+Un-enroll in a course
 &   %ROLE
 S\\
 \hline
 
 \hline
     %URI
-user/(course-id)/(forum-id)
+teacher/(course-id)/post
+&   % Method
+GET
+&   %Description
+Post material for a course
+&   %ROLE
+T\\
+\hline
+
+\hline
+    %URI
+student/(teacher-id)/message
 &   % Method
 POST
 &   %Description
-Enroll in a course
+Message a teacher
 &   %ROLE
-S\\
-\hline
-
-What is the URI? & What HTTP method uses? &  Describe briefly the result of calling the URI & is it behind a filter?\\
-
+T\\
 \hline
 
 
