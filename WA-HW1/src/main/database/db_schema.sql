@@ -1,118 +1,132 @@
-CREATE DATABASE tutordb OWNER parkadmin ENCODING = 'UTF8';
+create database LMS OWNER postgres ENCODING = 'UTF8';
 
--- Connect to the new db
-\c tutordb
+create type valid_gender as ENUM ('Male','Female','Other')
 
-CREATE SCHEMA amupark;
+create table lms_admin
+(	admin_id INT generated always as identity,
+    email CHAR(128) unique not null,
+	password CHAR(128) unique not null,
+	
+	primary key (admin_id)
+)
 
+create table lms_student 
+( 	student_id INT generated always as identity, 
+	name CHAR(128) not null, 
+    email CHAR(128) unique not null,
+	password CHAR(128) not null,
+	gender valid_gender not null, -- only 3 options available for user to choose
+    birthdate DATE not null, -- date format: 'year-month-day'
+	address CHAR(512), -- can be null
+	approved BOOL not null, -- bool format: '1' for true & '0' for false
+    admin_id INT not null,
+ 
+	primary key (student_id), 
+  	constraint studentFK   
+  		foreign key (admin_id)  
+  		references lms_admin (admin_id)  
+  			on delete no action 
+ 			on update cascade
+)
 
-CREATE TYPE amupark.roles AS ENUM (
-'base',
-'maintainer',
-'builder',
-'admin'
-);
+create table lms_teacher
+( 	teacher_id INT generated always as identity, 
+	name CHAR(128) not null, 
+    email CHAR(128) unique not null,
+	password CHAR(128) not null,
+	gender valid_gender not null, -- only 3 options available for user to choose
+	address CHAR(512), -- can be null
+ 
+	primary key (teacher_id)
+)
 
-CREATE TYPE amupark.eventcategories AS ENUM (
-'ordinary_maintenance',
-'extraordinary_maintenance',
-'hardware_upgrade',
-'other'
-);
+create table lms_course
+( 	course_id INT generated always as identity, 
+	name CHAR(256) not null, 
+    description TEXT not null,
+	prerequistie TEXT, -- can be null
+ 
+	primary key (course_id)
+)
 
-CREATE TYPE amupark.devicetypes AS ENUM (
-'hygrometer',
-'termometer',
-'barometer',
-'dynamometer',
-'capacitor',
-'other'
-);
+create table lms_material 
+( 	material_id INT generated always as identity, 
+	topic CHAR(128) not null, 
+    text TEXT not null,
+	img_name TEXT, -- can be null
+ 	img_file BYTEA, -- can be null
+    course_id INT not null,
+    teacher_id INT not null,
+ 
+	primary key (material_id), 
+  	constraint materialFK1   
+  		foreign key (course_id)  
+  		references lms_course (course_id)  
+  			on delete cascade
+ 			on update cascade,
+   	constraint materialFK2  
+  		foreign key (teacher_id)  
+  		references lms_teacher (teacher_id)  
+  			on delete no action
+ 			on update cascade
+)
 
+create table lms_attend 
+( 	student_id INT not null, 
+    course_id INT not null,
+ 
+	primary key (student_id, course_id), 
+  	constraint attendFK1   
+  		foreign key (student_id)  
+  		references lms_student (student_id)  
+  			on delete cascade
+ 			on update cascade,
+   	constraint attendFK2  
+  		foreign key (course_id)  
+  		references lms_course (course_id)  
+  			on delete cascade
+ 			on update cascade
+)
 
-CREATE TYPE amupark.sessiontypes AS ENUM (
-'testing', 
-'monitoring',
-'maintainance',
-'other'
-);
+create table lms_message
+( 	student_id INT not null, 
+    teacher_id INT not null,
+    topic CHAR(128), -- can be null
+    text TEXT not null,
+    timestamp TIMESTAMP not null, -- timestamp format: 'year-month-day hh:mm:ss'
+ 
+	primary key (student_id, teacher_id), 
+  	constraint messageFK1   
+  		foreign key (student_id)  
+  		references lms_student (student_id)  
+  			on delete cascade
+ 			on update cascade,
+   	constraint messageFK2  
+  		foreign key (teacher_id)  
+  		references lms_teacher (teacher_id)  
+  			on delete cascade
+ 			on update cascade
+)
 
-
-CREATE TABLE amupark.account (
-email VARCHAR(64) PRIMARY KEY,
-password TEXT NOT NULL,
-first_name VARCHAR(64) NOT NULL,
-last_name VARCHAR(66) NOT NULL,
-role amupark.roles DEFAULT 'base' NOT NULL
-);
-
-CREATE TABLE amupark.park (
-name VARCHAR(50) PRIMARY KEY,
-email VARCHAR(64) NOT NULL,
-address VARCHAR(250) NOT NULL
-);
-
-CREATE TABLE amupark.model (
-name VARCHAR(64) PRIMARY KEY,
-description TEXT
-);
-
-CREATE TABLE amupark.ride (
-rideid SERIAL PRIMARY KEY, 
-description TEXT,
-parkid VARCHAR(64) NOT NULL,
-modelid VARCHAR(64) NOT NULL,
-FOREIGN KEY(parkid) REFERENCES amupark.park(name) ON DELETE CASCADE,
-FOREIGN KEY(modelid) REFERENCES amupark.model(name) ON DELETE CASCADE
-);
-
-
-
-CREATE TABLE amupark.device (
-deviceid SERIAL PRIMARY KEY,
-name VARCHAR(64) NOT NULL,
-description TEXT,
-type amupark.devicetypes NOT NULL,
-rideid INTEGER NOT NULL,
-FOREIGN KEY(rideid) REFERENCES amupark.ride(rideid) ON DELETE CASCADE
-);
-
-
-CREATE TABLE amupark.event (
-eventid SERIAL PRIMARY KEY,
-type amupark.eventcategories NOT NULL,
-description TEXT,
-rideid INTEGER NOT NULL,
-userid VARCHAR(64) NOT NULL, 
-date_performed DATE NOT NULL,
-planned BOOLEAN,
-FOREIGN KEY(userid) REFERENCES amupark.account(email) ON DELETE CASCADE,
-FOREIGN KEY(rideid) REFERENCES amupark.ride(rideid) ON DELETE CASCADE
-);
-
-
-CREATE TABLE amupark.session(
-sessionid SERIAL PRIMARY KEY,
-added_by VARCHAR(64) NOT NULL,
-rideid INTEGER NOT NULL,
-start_time TIMESTAMP WITH TIME ZONE,
-end_time TIMESTAMP WITH TIME ZONE,
-type amupark.sessiontypes NOT NULL, 
-notes TEXT,
-date_added DATE,
-FOREIGN KEY(added_by) REFERENCES amupark.account(email) ON DELETE CASCADE,
-FOREIGN KEY(rideid) REFERENCES amupark.ride(rideid) ON DELETE CASCADE
-);
-
-
-CREATE TABLE amupark.measurement (
-id SERIAL PRIMARY KEY, 
-data_array DOUBLE PRECISION[],
-start_time TIMESTAMP WITH TIME ZONE,
-end_time TIMESTAMP WITH TIME ZONE,
-cycle SMALLINT,
-sessionid INTEGER NOT NULL,
-deviceid INTEGER NOT NULL,
-FOREIGN KEY(sessionid) REFERENCES amupark.session(sessionid) ON DELETE CASCADE,
-FOREIGN KEY(deviceid) REFERENCES amupark.device(deviceid) ON DELETE CASCADE
-);
+create table lms_register
+( 	admin_id INT not null, 
+    teacher_id INT not null,
+    course_id INT not null,
+ 
+	primary key (admin_id, teacher_id, course_id), 
+  	constraint registerFK1   
+  		foreign key (admin_id)  
+  		references lms_admin (admin_id)  
+  			on delete no action
+ 			on update cascade,
+   	constraint registerFK2  
+  		foreign key (teacher_id)  
+  		references lms_teacher (teacher_id)  
+  			on delete cascade
+ 			on update cascade,
+ 	constraint registerFK3
+  		foreign key (course_id)  
+  		references lms_course (course_id)  
+  			on delete cascade
+ 			on update cascade
+)
