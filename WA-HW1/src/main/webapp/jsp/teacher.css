@@ -1,0 +1,23 @@
+.header {
+    background-color: #dcd0ff;
+    padding-bottom: 5%;
+    padding-top: 2%;
+    color: white;
+    text-align: center;
+    font-size: 200px;
+
+}
+
+.col-2 {
+    background-color: #dcd0ff;
+    padding-top: 2%;
+    padding-bottom: 95%;
+    color: white;
+}
+
+.col {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+

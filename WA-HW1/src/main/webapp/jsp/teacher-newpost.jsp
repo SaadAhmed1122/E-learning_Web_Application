@@ -9,9 +9,24 @@
 <html>
 <head>
     <title>Post Material</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="teacher.css" type="text/css">
 </head>
 <body>
-    <h1>Post Material</h1>
-    <a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Go back to dashboard</a><br/>
+    <div class="header">
+        <h1>TORE</h1>
+    </div>
+    <div class="col">
+        <h1>Post Material</h1>
+        <form>
+            <label for="topic">Topic</label>
+            <input type="text" class="form-control" id="topic" name="topic">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+            <input type="file" class="form-control-file" id="file">
+            <button type="submit" class="btn btn-secondary">Post</button>
+            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/jsp/teacher.jsp">Cancel</a><br/>
+        </form>
+    </div>
 </body>
 </html>
