@@ -1,7 +1,14 @@
 \subsection{Class Diagram}
 
-\includegraphics[]{ClassDiagram.pdf}
+\includegraphics[]{ClassDiagram.png}
 
-%Describe here the class diagram of your project
+The class diagram contains (some of) the classes used to handle functionalities of the Admin, Teacher and Student in our system. 
+AdminServlet, TecherServlet and StudentServlet are subclasses of the Java's HttpServlet class. They are used to 
+request functionalities accessible by the repective user. The Connection Servlet is used to make connections 
+to the database and consequently exchange data from it. The Authentication Servlet is used 
+to authenticate each of the respective users. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+The AdminDAO, TeacherDAO and StudentDAO are subclasses of UserDAO because some of the 
+functionalities are common in each of the users. Theses DAO classes are used to obtain 
+access to the desired type of user in the system.
