@@ -1,11 +1,6 @@
 \subsection{Sequence Diagram}
 
-<<<<<<< HEAD
-\includegraphics[]{sequenceDiagram.pdf}
-
-%describe here the sequence diagram
-=======
-\includegraphics[]{images/sequenceDiagram.png}
+\includegraphics[width=\textwidth]{images/sequenceDiagram.png}
 
 %describe here the sequence diagram
 
@@ -17,4 +12,3 @@ The sequence starts with a user that sends a POST request for registration to th
 A UserServlet is then initialised and executes methods for doPost() and login().
 The user makes a call to the User model with newUser() and the User model asks for a request to the model AdminUser to approve the new user.
 After the approval of the new user, the UserServlet sends an authenticate(User) to UserDOA for the model to INSERT the new user data into the DatabaseServer model.
->>>>>>> 2d0f4141d9309feac2a7f28c438e0d60b1fed897
