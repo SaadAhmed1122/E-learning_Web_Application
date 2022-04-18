@@ -8,7 +8,7 @@ create table lms_admin
 	password CHAR(128) unique not null,
 	
 	primary key (admin_id)
-)
+);
 
 create table lms_student 
 ( 	student_id INT generated always as identity, 
@@ -27,7 +27,7 @@ create table lms_student
   		references lms_admin (admin_id)  
   			on delete no action 
  			on update cascade
-)
+);
 
 create table lms_teacher
 ( 	teacher_id INT generated always as identity, 
@@ -38,7 +38,7 @@ create table lms_teacher
 	address CHAR(512), -- can be null
  
 	primary key (teacher_id)
-)
+);
 
 create table lms_course
 ( 	course_id INT generated always as identity, 
@@ -47,7 +47,7 @@ create table lms_course
 	prerequistie TEXT, -- can be null
  
 	primary key (course_id)
-)
+);
 
 create table lms_material 
 ( 	material_id INT generated always as identity, 
@@ -69,7 +69,7 @@ create table lms_material
   		references lms_teacher (teacher_id)  
   			on delete no action
  			on update cascade
-)
+);
 
 create table lms_attend 
 ( 	student_id INT not null, 
@@ -86,7 +86,7 @@ create table lms_attend
   		references lms_course (course_id)  
   			on delete cascade
  			on update cascade
-)
+);
 
 create table lms_message
 ( 	student_id INT not null, 
@@ -106,7 +106,7 @@ create table lms_message
   		references lms_teacher (teacher_id)  
   			on delete cascade
  			on update cascade
-)
+);
 
 create table lms_register
 ( 	admin_id INT not null, 
@@ -129,4 +129,4 @@ create table lms_register
   		references lms_course (course_id)  
   			on delete cascade
  			on update cascade
-)
+);
