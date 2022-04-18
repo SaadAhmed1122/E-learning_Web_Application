@@ -1,7 +1,9 @@
 INSERT INTO lms_admin(email, password)
 VALUES('TORE@admin.com', md5('myPassword'));
 
-INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved, admin_id) VALUES
+INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved, admin_id) 
+OVERRIDING SYSTEM VALUE
+VALUES
 ('Ahmed Saad','Ahmed.Saad@tore.com',md5('SaadPassword'),'Male',DATE '1995-02-19','Padova', '1', 1),
 ('Bahrami Sepide','Bahrami.Sepide@tore.com',md5('SepidePassword'),'Female',DATE '1995-02-19','Padova','1', 1),	
 ('Hansen Marit Fredrikke','Hansen.MaritFredrikke@tore.com',md5('MaritPassword'),'Female',DATE '1995-02-19','Padova','1', 1),		
@@ -28,7 +30,9 @@ INSERT INTO lms_material(topic, text, img_name, img_file, course_id, teacher_id)
 ('topic1', 'learning this and that', null, null, 2, 1),
 ('topic1', 'learning this and that', null, null, 3, 1);
 
-INSERT INTO lms_attend(student_id, course_id) VALUES 
+INSERT INTO lms_attend(student_id, course_id) 
+OVERRIDING SYSTEM VALUE
+VALUES 
 (1, 1),
 (2, 1),
 (3, 1),
@@ -39,6 +43,22 @@ INSERT INTO lms_attend(student_id, course_id) VALUES
 (8, 1),
 (9, 1);
 
-INSERT INTO lms_message VALUES 
+INSERT INTO lms_message(student_id, teacher_id, topic, text, timestamp) 
+OVERRIDING SYSTEM VALUE
+VALUES 
+(1, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(2, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(3, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(4, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(5, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(6, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(7, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(8, 1, null, 'abc', TIMESTAMP '2022-05-20'),
+(9, 1, null, 'abc', TIMESTAMP '2022-05-20');
 
-INSERT INTO lms_register VALUES 
+INSERT INTO lms_register(admin_id, teacher_id, course_id)
+OVERRIDING SYSTEM VALUE
+VALUES 
+(1, 1, 1),
+(1, 1, 2),
+(1, 1, 3);
