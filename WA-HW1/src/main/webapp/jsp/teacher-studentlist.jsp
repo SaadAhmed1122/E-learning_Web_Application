@@ -20,12 +20,11 @@
     <div class="container-fluid ">
         <div class="row">
             <div class="col-2">
-                <a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Dashboard</a><br/>
+                <a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Teacher dashboard</a><br/>
                 <a href="${pageContext.request.contextPath}/jsp/teacher-studentlist.jsp">List of Students</a><br/>
-                <a href="${pageContext.request.contextPath}/jsp/teacher-newpost.jsp">Post Material</a><br/>
             </div>
             <div class="col">
-                <h1>List of Students</h1>
+                <h2>List of Students</h1>
                 <table class="table">
                     <thead>
                     <tr>
@@ -37,12 +36,13 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <!-- for loop get all students in cource from db -->
                     <tr>
                         <th scope="row">Marit</th>
                         <td>Web Applications</td>
                         <td>marit@studenti.unipd.it</td>
                         <td>12345678</td>
-                        <td><a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Remove</a><br/></td>
+                        <td><a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Remove</a><br/></td> <!-- remove student form db -->
                     </tr>
                     </tbody>
                 </table>

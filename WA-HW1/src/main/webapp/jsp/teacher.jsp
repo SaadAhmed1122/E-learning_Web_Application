@@ -19,12 +19,20 @@
     <div class="container-fluid ">
         <div class="row">
             <div class="col-2">
-                <a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Dashboard</a><br/>
+                <a href="${pageContext.request.contextPath}/jsp/teacher.jsp">Teacher dashboard</a><br/>
                 <a href="${pageContext.request.contextPath}/jsp/teacher-studentlist.jsp">List of Students</a><br/>
-                <a href="${pageContext.request.contextPath}/jsp/teacher-newpost.jsp">Post Material</a><br/>
             </div>
             <div class="col">
-                <h1>Teacher dashboard</h1>
+                <h2>Teacher dashboard</h2>
+                <!-- For loop with all cources of that teacher -->
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="courceIcon.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Cource id name</h5> <!-- Get id and name form db -->
+                        <p class="card-text">Info</p>  <!-- Get amout of students -->
+                        <a href="${pageContext.request.contextPath}/jsp/cource.jsp" class="btn btn-primary">Go to cource</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -17,14 +17,14 @@
         <h1>TORE</h1>
     </div>
     <div class="col">
-        <h1>Post Material</h1>
+        <h2>Post Material</h2>
         <form>
             <label for="topic">Topic</label>
             <input type="text" class="form-control" id="topic" name="topic">
             <label for="description">Description</label>
             <textarea class="form-control" id="description" rows="3"></textarea>
             <input type="file" class="form-control-file" id="file">
-            <button type="submit" class="btn btn-secondary">Post</button>
+            <button type="submit" class="btn btn-secondary">Post</button> <!-- needs to do something and be connected to correct cource -->
             <a class="btn btn-secondary" href="${pageContext.request.contextPath}/jsp/teacher.jsp">Cancel</a><br/>
         </form>
     </div>
