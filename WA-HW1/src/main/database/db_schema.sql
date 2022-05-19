@@ -66,6 +66,7 @@ create table lms_material
 create table lms_attend 
 ( 	student_id INT not null, 
     course_id INT not null,
+    approved BOOL not null,
  
 	primary key (student_id, course_id), 
   	constraint attendFK1   
