@@ -1,7 +1,7 @@
-package com.example.elearning_project.MVC.Controller;
+package MVC.Controller;
 
-import com.example.elearning_project.MVC.Bean.LoginBean;
-import com.example.elearning_project.MVC.dao.LoginDao;
+import MVC.Bean.LoginBean;
+import MVC.dao.LoginDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

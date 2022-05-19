@@ -13,7 +13,7 @@
 </head>
 <body>
 <%@page import="java.sql.*" %>
-<%@ page import="com.example.elearning_project.MVC.Controller.DatabaseConnection" %>
+<%@ page import="MVC.Controller.DatabaseConnection" %>
 
 
 <%

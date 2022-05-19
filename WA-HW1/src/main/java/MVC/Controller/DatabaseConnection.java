@@ -1,4 +1,4 @@
-package com.example.elearning_project.MVC.Controller;
+package MVC.Controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

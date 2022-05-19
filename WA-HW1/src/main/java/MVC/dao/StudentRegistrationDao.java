@@ -1,8 +1,8 @@
-package com.example.elearning_project.MVC.dao;
+package MVC.dao;
 
 
-import com.example.elearning_project.MVC.Bean.StudentBean;
-import com.example.elearning_project.MVC.Controller.DatabaseConnection;
+import MVC.Bean.StudentBean;
+import MVC.Controller.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
