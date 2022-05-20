@@ -133,7 +133,7 @@
                             </br>
 
                             <div alight="right">
-                                <a href="index.jsp"> <input type="submit" id="submit" value="submit_subject" name="submit_subject" class="btn btn-info"></a>
+                                <input class="btn btn-info" type="submit" name="submit_subject" value="submit_subject">
                                 <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
                             </div>
 
