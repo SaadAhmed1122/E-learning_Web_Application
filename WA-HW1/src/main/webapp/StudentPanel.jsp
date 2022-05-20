@@ -16,6 +16,7 @@
         <title>Title</title>
     </head>
     <body>
+
         <h1>Welcome to Student Page</h1>
         <center>
         <%
@@ -27,6 +28,24 @@
         <%@ include file="styling/header.jsp" %>
 
         Welcome, <%=session.getAttribute("login")%>!
+
+        <%
+            int stud_id = 0;
+            Connection con0;
+
+            ResultSet rs0;
+            String student_mail0 = (String) session.getAttribute("login");
+
+            con0 = DatabaseConnection.initializeDatabase();
+            String query0 = "select lms_student.student_id from lms_student where lms_student.email='" + student_mail0 + "'";
+            Statement st0 = con0.createStatement();
+
+            rs0 = st0.executeQuery(query0);
+
+            while (rs0.next()) {
+                stud_id = rs0.getInt(1);
+            }
+        %>
 
         <h1>Dashboard</h1>
 
@@ -56,9 +75,8 @@
 
                 rs = st.executeQuery(query);
 
-                int stud_id=0;
+
                 while (rs.next()) {
-                    stud_id = rs.getInt(2);
                     %>
                         <tr>
                             <td><%=rs.getString("name")%></td>
@@ -99,24 +117,23 @@
                                 rs1 = pst1.executeQuery();
                             %>
 
-
                             </br>
                             <div class="col-md-4">
                                 <div align="left">
+
                                     <select name = "genderdropdown_course">
                                         <% while(rs1.next()) {  %>
                                         <option value = "<%= rs1.getString("course_id")%>" selected><%=rs1.getString("name")%></option>
                                         <% }  %>
                                     </select>
-
-                                    <p name="std_id" value="stud_id"></p>
+                                    <input type="hidden" name="student_id" value="<%=stud_id%>"/>
                                 </div>
                             </div>
 
                             </br>
 
                             <div alight="right">
-                                <a href="index.jsp"> <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info"></a>
+                                <a href="index.jsp"> <input type="submit" id="submit" value="submit_subject" name="submit_subject" class="btn btn-info"></a>
                                 <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
                             </div>
 
@@ -130,7 +147,7 @@
 
             </div>
         </div>
-
+            <a href="MessageTeacher.jsp" class="btn btn-info btn-lg" role="button">Send Message</a>
         <h3>
             <a href="logout.jsp">Logout</a>
         </h3>
