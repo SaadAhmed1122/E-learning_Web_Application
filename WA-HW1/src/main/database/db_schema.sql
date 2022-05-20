@@ -86,7 +86,6 @@ create table lms_message
     teacher_id INT not null,
     topic CHAR(128), -- can be null
     text TEXT not null,
-    timestamp TIMESTAMP not null, -- timestamp format: 'year-month-day hh:mm:ss'
  
 	primary key (student_id, teacher_id), 
   	constraint messageFK1   
