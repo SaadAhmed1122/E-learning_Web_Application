@@ -70,7 +70,7 @@
                 String query = "select lms_course.course_id, lms_attend.student_id, lms_course.name, lms_course.description, lms_course.prerequistie \n" +
                         "from lms_course, lms_attend\n" +
                         "where lms_attend.student_id = (select lms_student.student_id from lms_student where lms_student.email='" + student_mail + "')" +
-                        "and lms_attend.course_id = lms_course.course_id ";
+                        "and lms_attend.course_id = lms_course.course_id and lms_attend.approved = '1'";
                 Statement st = con.createStatement();
 
                 rs = st.executeQuery(query);
