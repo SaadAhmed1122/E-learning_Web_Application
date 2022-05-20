@@ -87,7 +87,7 @@ create table lms_message
     topic CHAR(128), -- can be null
     text TEXT not null,
  
-	primary key (student_id, teacher_id), 
+	primary key (student_id, teacher_id, topic, text), 
   	constraint messageFK1   
   		foreign key (student_id)  
   		references lms_student (student_id)  
