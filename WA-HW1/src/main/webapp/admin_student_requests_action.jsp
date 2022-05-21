@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*"%>
-<%@ page import="com.example.elearning_project.MVC.Controller.DatabaseConnection" %>
+<%@ page import="MVC.Controller.DatabaseConnection" %>
 
 
 <%

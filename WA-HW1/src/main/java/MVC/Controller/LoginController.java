@@ -1,7 +1,7 @@
-package com.example.elearning_project.MVC.Controller;
+package MVC.Controller;
 
-import com.example.elearning_project.MVC.Bean.LoginBean;
-import com.example.elearning_project.MVC.dao.LoginDao;
+import MVC.Bean.LoginBean;
+import MVC.dao.LoginDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -40,6 +40,13 @@ public class LoginController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("login_admin",loginBean.getEmail_id());
                 RequestDispatcher rd= request.getRequestDispatcher("Adminpage.jsp");
+                rd.forward(request,response);
+
+            }
+            else if(authorize.equals("SUCCESS LOGIN TEACHER")){
+                HttpSession session = request.getSession();
+                session.setAttribute("login_teacher_email",loginBean.getEmail_id());
+                RequestDispatcher rd= request.getRequestDispatcher("teacher_main.jsp");
                 rd.forward(request,response);
 
             }

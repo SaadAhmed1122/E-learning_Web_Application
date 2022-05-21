@@ -1,5 +1,5 @@
 <%@ page import="java.sql.*" %>
-<%@ page import="com.example.elearning_project.MVC.Controller.DatabaseConnection" %>
+<%@ page import="MVC.Controller.DatabaseConnection" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.

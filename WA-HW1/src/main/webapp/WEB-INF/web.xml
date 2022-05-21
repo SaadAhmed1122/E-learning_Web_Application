@@ -11,7 +11,7 @@
 
 <!--    <servlet>-->
 <!--    <servlet-name>Assign_Course_Servlet</servlet-name>-->
-<!--    <servlet-class>com.example.elearning_project.MVC.Controller.AddCourseServlet</servlet-class>-->
+<!--    <servlet-class>MVC.Controller.AddCourseServlet</servlet-class>-->
 <!--</servlet>-->
 <!--    <servlet-mapping>-->
 <!--        <servlet-name>Assign_Course_Servlet</servlet-name>-->

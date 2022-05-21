@@ -1,7 +1,7 @@
-package com.example.elearning_project.MVC.Controller;
+package MVC.Controller;
 
-import com.example.elearning_project.MVC.Bean.StudentBean;
-import com.example.elearning_project.MVC.dao.StudentRegistrationDao;
+import MVC.Bean.StudentBean;
+import MVC.dao.StudentRegistrationDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

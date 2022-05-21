@@ -1,4 +1,4 @@
-package com.example.elearning_project.MVC.Bean;
+package MVC.Bean;
 
 public class TeacherBean {
     int teacher_id;

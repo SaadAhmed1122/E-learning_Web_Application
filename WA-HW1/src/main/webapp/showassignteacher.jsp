@@ -1,7 +1,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.example.elearning_project.MVC.Controller.DatabaseConnection" %>
+<%@ page import="MVC.Controller.DatabaseConnection" %>
 <%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: Saad

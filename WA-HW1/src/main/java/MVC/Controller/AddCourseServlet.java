@@ -1,12 +1,12 @@
-package com.example.elearning_project.MVC.Controller;
+package MVC.Controller;
 
-import com.example.elearning_project.MVC.Bean.Assign_course_Bean;
-import com.example.elearning_project.MVC.Bean.CourseBean;
-import com.example.elearning_project.MVC.Bean.TeacherBean;
-import com.example.elearning_project.MVC.dao.Assign_course_dao;
-import com.example.elearning_project.MVC.dao.CourseDao;
-import com.example.elearning_project.MVC.dao.TeacherManagmentDao;
-import com.example.elearning_project.MVC.dao.TeacherRegistrationDao;
+import MVC.Bean.Assign_course_Bean;
+import MVC.Bean.CourseBean;
+import MVC.Bean.TeacherBean;
+import MVC.dao.Assign_course_dao;
+import MVC.dao.CourseDao;
+import MVC.dao.TeacherManagmentDao;
+import MVC.dao.TeacherRegistrationDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
