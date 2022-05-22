@@ -48,7 +48,6 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("login_teacher_email",loginBean.getEmail_id());
                 RequestDispatcher rd= request.getRequestDispatcher("teacher_main.jsp");
                 rd.forward(request,response);
-
             }
 
             else{

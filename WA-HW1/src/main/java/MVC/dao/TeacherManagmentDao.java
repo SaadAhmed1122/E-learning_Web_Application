@@ -95,6 +95,27 @@ public class TeacherManagmentDao {
 
         return teacher;
     }
+    public TeacherBean getteacherByemail(String teacher_email) {
+        TeacherBean teacher = new TeacherBean();
+        try {
+            PreparedStatement preparedStatement = con.
+                    prepareStatement("select * from lms_teacher where email=?");
+            preparedStatement.setString(1, teacher_email);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                teacher.setTeacher_id(rs.getInt("teacher_id"));
+                teacher.setName(rs.getString("name"));
+                teacher.setEmail(rs.getString("email"));
+                teacher.setGender(rs.getString("gender"));
+                teacher.setAddress(rs.getString("address"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return teacher;
+    }
 
 
 

@@ -20,27 +20,15 @@
 <h1>Welcome to Course Page</h1>
 <center>
         <%
-            if(session.getAttribute("login")==null || session.getAttribute("login")=="")
+            if(session.getAttribute("login_teacher_email")==null || session.getAttribute("login_teacher_email")=="")
             {
                 response.sendRedirect("index.jsp");
             }
 
         %>
-        <%@ include file="styling/header.jsp" %>
-        <div class="row">
-            <div class="col-md-2">
 
-            </div>
-            <div class="col-sm-8">
-                <div class="panel-body">
-                    <table id="tbl-courses" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
-                        <thead>
-                        <tr>
-                            <th>Marterial Topic</th>
-                            <th>Material Text</th>
-                            <th>Material Link</th>
-                        </tr>
-                        <%
+    <%
+
                         PreparedStatement pst;
                         ResultSet rs;
 
@@ -51,6 +39,22 @@
                         pst.setInt(1, id);
                         rs = pst.executeQuery();
 
+    %>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="Upload_course_material.jsp?course_id=<%=id%>" ><h2 style="margin-left: 800px;">Upload Material</h2></a>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel-body">
+                <table id="tbl-courses" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Marterial Topic</th>
+                        <th>Material Text</th>
+                        <th>Material Link</th>
+                    </tr>
+                        <%
+
                         while(rs.next())
                         {
 
@@ -60,12 +64,12 @@
                         <td><%=rs.getString("text") %></td>
                         <td><%=rs.getString("img_file") %></td>
                     </tr>
-                <%
+                        <%
                                   }
                         %>
-                        </table>
-                    </div>
-                </div>
+                </table>
             </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -4,15 +4,15 @@
 <%@ page import="MVC.Controller.DatabaseConnection" %>
 <%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
-  User: Saad
-  Date: 5/20/2022
-  Time: 4:02 PM
+  User: sepid
+  Date: 5/22/2022
+  Time: 1:18 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Teacher</title>
+    <title>TeacherInbox</title>
 </head>
 <body>
 <%
@@ -20,9 +20,7 @@
         response.sendRedirect("index.jsp");
     }
 %>
-<h1>Welcome Teacher</h1>
-
-<h1>Dashboard</h1>
+<%@ include file="styling/header.jsp" %>
 
 <div class="row">
     <div class="col-md-2"></div>
@@ -31,46 +29,41 @@
             <table id="tbl-courses" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Course Name</th>
-                    <th>Course Description</th>
-
-                    <th>View Course</th>
+                    <th>Student Name</th>
+                    <th>Student Email</th>
+                    <th>Message Topic</th>
+                    <th>Message Text</th>
                 </tr>
                     <%
                 Connection con;
-                PreparedStatement pst;
+                String id = request.getParameter("teacher_id");
+
                 ResultSet rs;
-                String teacher_mail = (String) session.getAttribute("login_teacher_email");
                 con = DatabaseConnection.initializeDatabase();
-                String query = "select lms_course.course_id, lms_assign_courses.teacher_id, lms_course.name, lms_course.description \n" +
-                        "from lms_course, lms_assign_courses\n" +
-                        "where lms_assign_courses.teacher_id = (select lms_teacher.teacher_id from lms_teacher where lms_teacher.email='" + teacher_mail + "')" +
-                        "and lms_assign_courses.course_id = lms_course.course_id ";
+                String query = "select lms_student.name, lms_student.email, lms_message.topic, lms_message.text from lms_message, lms_student \n" +
+                                "where lms_message.teacher_id ='" + id + "' and lms_message.student_id = lms_student.student_id ";
                 Statement st = con.createStatement();
 
                 rs = st.executeQuery(query);
 
-                int teacher_id=0;
                 while (rs.next()) {
-                    teacher_id = rs.getInt(2);
                     %>
                 <tr>
                     <td><%=rs.getString("name")%></td>
-                    <td><%=rs.getString("description")%></td>
-<%--                    <td><%=rs.getString("prerequistie")%></td>--%>
-                    <td><a href="Teacher_course_list.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
+                    <td><%=rs.getString("email")%></td>
+                    <td><%=rs.getString("topic")%></td>
+                    <td><%=rs.getString("text")%></td>
                 </tr>
                     <%
-                    con.close();
                 }
                 %>
             </table>
         </div>
-        <a href="TeacherMessageInbox.jsp?teacher_id=<%=teacher_id%>" class="btn btn-info btn-lg" role="button">Message Inbox</a>
     </div>
 </div>
 <h3>
-    <a href="logout.jsp">Logout</a>
+    <a href="teacher_main.jsp">Back</a>
 </h3>
+
 </body>
 </html>
