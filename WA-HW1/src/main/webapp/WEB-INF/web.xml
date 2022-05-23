@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>HW1-2022</display-name>
+    <description>HW1 - backend of the tutor's project</description>
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--    <servlet>-->
+<!--    <servlet-name>Assign_Course_Servlet</servlet-name>-->
+<!--    <servlet-class>MVC.Controller.AddCourseServlet</servlet-class>-->
+<!--</servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>Assign_Course_Servlet</servlet-name>-->
+<!--        <url-pattern>/AddCourseServlet</url-pattern>-->
+<!--    </servlet-mapping>-->
+</web-app>

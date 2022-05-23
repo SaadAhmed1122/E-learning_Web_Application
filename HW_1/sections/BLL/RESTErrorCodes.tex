@@ -1,0 +1,117 @@
+\subsection{REST Error Codes}
+
+%If needed, add few lines of text, describing the error codes table
+
+The list of the rest API for this homework are still “in progress” because we have to decide according to the
+front-end where is better to use a REST call or not. The list of errors defined in the application. Application specific errors have the application error which
+follows a progressive numeration starting from -100. METHOD NOT ALLOWED errors are identified with
+the error code -500. Internal errors, which correspond to crashes, servlet exceptions, or problems with the
+input/output streams are identified with the Error Code -999.
+
+\begin{longtable}{|p{.15\columnwidth}|p{.3\columnwidth} |p{.5\columnwidth}|} 
+\hline
+
+\textbf{Error Code} & \textbf{HTTP Status Code} & \textbf{Description} \\
+
+\hline
+- 100
+&
+WRONG\textunderscore FORMAT
+&
+Wrong format of the request
+\hline
+
+\hline
+- 102
+&
+EMPTY\textunderscore INPUT\textunderscore FIELDS
+&
+One or more input fields are empty
+\hline
+
+\hline
+- 105
+&
+WRONG\textunderscore CREDENTIALS
+&
+Submitted credentials are wrong
+\hline
+
+\hline
+- 109
+&
+UNRECOGNIZED\textunderscore ROLE
+&
+Unrecognized role of a user
+\hline
+
+\hline
+- 113
+&
+WRONG\textunderscore REST\textunderscore FORMAT
+&
+Wrong rest request format
+\hline
+
+\hline
+- 116
+&
+USER\textunderscore NOT\textunderscore FOUND
+&
+User not found
+\hline
+
+\hline
+- 120
+&
+BADLY\textunderscore FORMATTED\textunderscore JSON
+&
+The input json is in the wrong format
+\hline
+
+\hline
+- 200
+&
+OPERATION\textunderscore UNKNOWN
+&
+User Operation unknown
+\hline
+
+\hline
+- 600
+&
+METHOD\textunderscore NOT\textunderscore ALLOWED
+&
+The function/method is not allowed
+\hline
+
+\hline
+- 998
+&
+SQL\textunderscore ERROR
+&
+SQL/or Database Error
+\hline
+
+\hline
+- 999
+&
+INTERNAL\textunderscore ERROR
+&
+Internal Error
+\hline
+
+\hline
+- 500
+&
+SERVER\textunderscore ERROR
+&
+Connection or Server Error
+\hline
+
+
+
+
+\caption{Describe in this table your REST API Errors}
+\label{tab:termGlossary}
+\end{longtable}

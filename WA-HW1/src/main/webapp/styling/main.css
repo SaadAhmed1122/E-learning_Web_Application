@@ -1,0 +1,75 @@
+.progress-table {
+    background: #f9f9ff;
+    padding: 15px 0px 30px 0px;
+    min-width: 800px
+}
+
+.progress-table .serial {
+    width: 11.83%;
+    padding-left: 30px
+}
+
+.progress-table .id {
+    width: 10.07%
+}
+.progress-table .name {
+    width: 20.07%
+}
+
+.progress-table .email {
+    width: 25.74%
+}
+
+.progress-table .gender {
+    width: 14.74%
+}
+.progress-table .dob {
+    width: 14.74%
+}.progress-table .address {
+    width: 14.74%
+}
+
+.progress-table .accept {
+    width: 40.36%;
+    padding-right: 50px
+}
+
+.progress-table .table-head {
+    display: flex
+}
+
+.progress-table .table-head .serial,
+.progress-table .table-head .id,
+.progress-table .table-head .name,
+.progress-table .table-head .email,
+.progress-table .table-head .gender,
+.progress-table .table-head .dob,
+.progress-table .table-head .address,
+.progress-table .table-head .accept {
+    color: #415094;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.progress-table .table-row {
+    padding: 15px 0;
+    border-top: 1px solid #edf3fd;
+    display: flex
+}
+
+.progress-table .table-row .serial,
+.progress-table .table-row .id,
+.progress-table .table-row .name,
+.progress-table .table-row .email,
+.progress-table .table-row .gender,
+.progress-table .table-row .dob,
+.progress-table .table-row .address,
+.progress-table .table-row .accept {
+    display: flex;
+    align-items: center
+}
+
+.progress-table .table-row .name img {
+    margin-right: 15px
+}

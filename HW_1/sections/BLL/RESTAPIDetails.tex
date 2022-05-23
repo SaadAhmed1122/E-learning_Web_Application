@@ -1,0 +1,105 @@
+\subsection{REST API Details}
+
+In our project, we have 10 different resource types that our web application handles during its functioning. Following are resources.
+
+%Homepage content
+\subsubsection*{Homepage content}
+The homepage contains an aggregation of different pieces of information. In particular, the Homepage has login and register pages, which allow users to log in themselves and register as well.
+\begin{itemize}
+    \item URL: \texttt{Homepage/overview}
+    \item Method: \texttt{GET}
+    \item URL Parameters: \texttt{No Parameters are required in the URL}
+    \item Data Parameters: \texttt{No Data is passed when requiring this method}
+    \item Success Response: \texttt{Code: 200}
+\end{itemize}
+
+%Login Page
+\subsubsection*{Login Page}
+\begin{itemize}
+    \item URL: \texttt{Homepage/LMS/register}
+    \item Method: \texttt{POST}
+    \item URL Parameters:
+    \begin{itemize}
+        \item \texttt Name: \{string\}
+        \item \texttt email = \{string\}
+        \item \texttt birth\_date = \{string\}
+        \item \texttt gender = \{string\}
+        \item \texttt address = \{string\}
+        \item \texttt password = \{string\}
+    \end{itemize}
+    \item Success Response: \texttt{Code: 200} \newline
+    Content: The user is redirected to the login page.
+    \item Error Responses:
+    \begin{itemize}
+        \item {Code: 400 BAD\_REQUEST} \newline
+        Content: \texttt {\{“error”: \{“code”: -102, “message” : “One or more input fields are empty.”\}\}} \newline
+        When: \texttt some of the parameters are missing or are empty string.
+
+        \item {Code: 409 CONFLICT} \newline
+        Content: \texttt {\{“error”: \{“code”: -107, “message” : “Email Already Used.”\}\}} \newline
+        When: The user is trying to get register with the same email address that is already present in database.
+
+        \item {Code: 400 BAD_REQUEST} \newline
+        Content: \texttt {\{“code”: -108, “message” : “Password is Weak.”\}\}} \newline
+        When: Entered Password is weak.
+
+        \item {Code: 500 INTERNAL_SERVER_ERROR} \newline
+        content: \texttt {\{“code”: -999, “message” : “Internal Error.”\}\}} \newline
+        When: if there is a SQLException or a NamingException, this error is returned.
+    \end{itemize}
+\end{itemize}
+
+%Admin Page
+\subsubsection*{Admin Page}
+It contains the full details of Student and Teacher information in the database, there is a page that contains information about students and their enrolled courses, and there is also a separate page for Teacher's' information and their teaching courses.
+%View Students
+
+\subsubsection* {1.View Students:}
+Admin can View all registered student.
+\begin{itemize}
+    \item \textbf {URL:} \texttt{/admin/student-list}
+    \item \textbf {Method:} \texttt{GET}
+    \item \textbf {Data Parameters:} \texttt{No Data is passed when requiring this method.}
+    \item \textbf {Success Response:} \texttt{Code: 200} \newline
+    Upon success, the servlet returns a JSON object with the required information.\newline
+
+    Content: \newline
+    \{ \newline
+    "data": \newline
+    [\{ \newline
+    \texttt {"Name": "XYZ”} \newline
+    \texttt {"email":"xyz@gmail.com"} \newline
+    \texttt {"address”: “Padova, PD 35010"} \newline
+    \texttt {"Courses List": “Machine Learning, Foundation of Database,  Search Engine, Web Application”} \newline
+    \}] \newline
+    \}
+    \item \textbf {Error Responses:} \texttt{Code: 500 INTERNAL\_SERVER\_ERROR} \newline
+    Content: \texttt {\{“error”: \{“code”: -999, “message” : “Internal Error.”\}\}} \newline
+    When: if there is a SQLException or a NamingException, this error is returned.
+\end{itemize}
+
+
+%View Courses
+\subsubsection* {2. View Courses:}
+Admin can View all courses.
+\begin{itemize}
+    \item \textbf {URL:} \texttt{/admin/courses}
+    \item \textbf {Method:} \texttt{GET}
+    \item \textbf {Data Parameters:} \texttt{No Data is passed when requiring this method.}
+    \item \textbf {Success Response:} \texttt{Code: 200} \newline
+    Upon success, the servlet returns a JSON object with the required information.\newline
+
+    Content: \newline
+    \{ \newline
+    "data": \newline
+    [\{ \newline
+    \texttt {"Name": "XYZ”} \newline
+    \texttt {"email":"xyz@gmail.com"} \newline
+    \texttt {"address”: “Padova, PD 35010"} \newline
+    \vspace \texttt {"Courses List": “Machine Learning, Foundation of Database,  Search Engine, Web Application”} \newline
+    \}] \newline
+    \}
+    \item \textbf {Error Responses:} \texttt{Code: 500 INTERNAL\_SERVER\_ERROR} \newline
+    Content: \texttt {\{“error”: \{“code”: -999, “message” : “Internal Error.”\}\}} \newline
+    When: if there is a SQLException or a NamingException, this error is returned.
+\end{itemize}
