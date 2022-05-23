@@ -64,8 +64,10 @@
 <%--                    <td><a href="TeacherControllerServlet?action=edit&teacher_id=<%=teacher_id%>">Edit</a></td>--%>
                     <td><a href="teacher_update.jsp?id=<%=teacher_id%>">Edit</a></td>
                     <td><a href="deletestd.jsp?teacher_id=<%=teacher_id%>&id=0">Delete</a></td>
+
                 </tr>
                     <%
+
                                  }
                                %>
             </table>

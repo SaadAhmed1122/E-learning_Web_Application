@@ -22,6 +22,7 @@ public class LoginDao {
         try {
             Connection con = DatabaseConnection.initializeDatabase();
             PreparedStatement pstm= null;
+            PreparedStatement pstm3= null;
             PreparedStatement pstm2= null;
            // Statement stmt = con.createStatement();
             pstm = con.prepareStatement("select * from lms_student " +
@@ -29,17 +30,23 @@ public class LoginDao {
 
             pstm2 = con.prepareStatement("select * from lms_admin " +
                     "where email=? and password=('"+password+"')");
+            pstm3 = con.prepareStatement("select * from lms_teacher " +
+                    "where email=? and password=('"+password+"')");
 
            //// pstm= con.prepareStatement("select * from students where email_id = " + email + " and password = ('" + password + "')");
 
             //String sql="select * from students where email_id = " + email + " and password = ('" + password + "')";
             //ResultSet rs = stmt.executeQuery (sql);
 
-            pstm.setString(1,email);;
-            pstm2.setString(1,email);;
+            pstm.setString(1,email);
+            pstm2.setString(1,email);
+            pstm3.setString(1,email);
+
 
            ResultSet rs= pstm.executeQuery();
            ResultSet rs2= pstm2.executeQuery();
+           ResultSet rs3= pstm3.executeQuery();
+
 
             if (rs.next()){
                 dbemail= rs.getString("email");
@@ -61,6 +68,10 @@ public class LoginDao {
                 else if (rs2.next()){
                     return "SUCCESS LOGIN ADMIN";
                 }
+                else if(rs3.next()){
+                    return "SUCCESS LOGIN TEACHER";
+            }
+                pstm3.close();
                 pstm2.close();
             pstm.close();
 

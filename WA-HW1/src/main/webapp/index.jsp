@@ -8,7 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<%--<a href="hello-servlet">Hello Servlet</a>--%>
 <form method="post" action="./LoginController" name="LoginForm" onsubmit="return validate();">
     Email: <input type="email" name="txt_email">
     password: <input type="password" name="txt_password">

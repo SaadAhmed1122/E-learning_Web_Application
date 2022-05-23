@@ -35,6 +35,9 @@
                     <li >
                         <a  href="showassignteacher.jsp">Show Assigned Courses</a>
                     </li>
+                    <li >
+                        <a  href="Student_subject_request.jsp">Student Subject Request</a>
+                    </li>
         </ul>
 
 

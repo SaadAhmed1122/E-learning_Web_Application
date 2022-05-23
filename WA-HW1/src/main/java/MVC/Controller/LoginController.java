@@ -43,6 +43,12 @@ public class LoginController extends HttpServlet {
                 rd.forward(request,response);
 
             }
+            else if(authorize.equals("SUCCESS LOGIN TEACHER")){
+                HttpSession session = request.getSession();
+                session.setAttribute("login_teacher_email",loginBean.getEmail_id());
+                RequestDispatcher rd= request.getRequestDispatcher("teacher_main.jsp");
+                rd.forward(request,response);
+            }
 
             else{
                 request.setAttribute("WrongLoginMsg",authorize);
