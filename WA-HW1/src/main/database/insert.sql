@@ -1,21 +1,20 @@
 INSERT INTO lms_admin(email, password)
-VALUES('TORE@admin.com', md5('myPassword'));
+VALUES('tore@admin.com', 'root');
 
-INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved, admin_id) 
-OVERRIDING SYSTEM VALUE
+INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved) 
 VALUES
-('Ahmed Saad','Ahmed.Saad@tore.com',md5('SaadPassword'),'Male',DATE '1995-02-19','Padova', '1', 1),
-('Bahrami Sepide','Bahrami.Sepide@tore.com',md5('SepidePassword'),'Female',DATE '1995-02-19','Padova','1', 1),	
-('Hansen Marit Fredrikke','Hansen.MaritFredrikke@tore.com',md5('MaritPassword'),'Female',DATE '1995-02-19','Padova','1', 1),		
-('Rao Abdul Moeed','Rao.AbdulMoeed@tore.com',md5('MoeedPassword'),'Male',DATE '1995-02-19','Padova','1', 1),			
-('Rehman Abdul','Rehman.Abdul@tore.com',md5('AbdulPassword'),'Male',DATE '1995-02-19','Padova','1', 1),		
-('Sohai Mohammad Muzammil','Sohai.MohammadMuzammil@tore.com',md5('MuzammilPassword'),'Male',DATE '1995-02-19','Padova','1', 1),		
-('Soomro Dodo Khan','Soomro.DodoKhan@tore.com',md5('DKPassword'),'Male',DATE '1995-02-19','Padova','1', 1),
-('Sultanova Aliia','Sultanova.Aliia@tore.com',md5('AliiaPassword'),'Female',DATE '1995-02-19','Padova','1', 1),
-('Zabalawi  Iyad','Zabalawi.Iyad@tore.com',md5('IyadPassword'),'Male',DATE '1995-02-19','Padova','1', 1);
+('Ahmed Saad','Saad@tore.com','SaadPassword1','Male','02/19/1995','Padova', '1'),
+('Bahrami Sepide','Sepide@tore.com','SepidePassword1','Female','02/19/1995','Padova','1');
+('Hansen Marit Fredrikke','Hansen.MaritFredrikke@tore.com','MaritPassword1','Female','02/19/1995','Padova','1'),		
+('Rao Abdul Moeed','Rao.AbdulMoeed@tore.com','MoeedPassword1','Male','02/19/1995','Padova','1'),			
+('Rehman Abdul','Rehman.Abdul@tore.com','AbdulPassword1','Male','02/19/1995','Padova','1'),		
+('Sohai Mohammad Muzammil','Sohai.MohammadMuzammil@tore.com','MuzammilPassword1','Male','02/19/1995','Padova','1'),		
+('Soomro Dodo Khan','Soomro.DodoKhan@tore.com','DKPassword1','Male','02/19/1995','Padova','1'),
+('Sultanova Aliia','Sultanova.Aliia@tore.com','AliiaPassword1','Female','02/19/1995','Padova','1'),
+('Zabalawi  Iyad','Zabalawi.Iyad@tore.com','IyadPassword1','Male','02/19/1995','Padova','1');
 
 INSERT INTO lms_teacher (name, email, password, gender, address) VALUES 
-('Nicola Ferro','Nicola.Ferro@tore.com',md5('SaadPassword'),'Male','Padova');
+('Nicola Ferro','Nicola.Ferro@tore.com','NicolaPassword1','Male','Padova');
 
 INSERT INTO lms_course(name, description, prerequistie) VALUES
 ('Web Applications', 'This course lays the foundations of Web design and development, practicing them through the implementation of an actual application.
@@ -25,40 +24,23 @@ We will learn the theoretical and technical foundations of information retrieval
 ('Foundations of Databases', 'This course lays the foundations of data management and modelling, providing you with the indispensable knowledge needed for storing and searching structured data.
 We will learn about conceptual database design, the relational model, and the Structured Query Language (SQL), as well as how to employ them to design and develop database applications in real-world scenarios.', 'Basic knowledge of the Java programming language.');
 
-INSERT INTO lms_material(topic, text, img_name, img_file, course_id, teacher_id) VALUES
-('topic1', 'learning this and that', null, null, 1, 1),
-('topic1', 'learning this and that', null, null, 2, 1),
-('topic1', 'learning this and that', null, null, 3, 1);
+INSERT INTO lms_material(topic, text, img_file, course_id, teacher_id) VALUES
+('topic1', 'learning Web Applications', 'https://sc04.alicdn.com/kf/U18a4a096b0564d01b2caef2f382f36ad1.jpg', 1, 1),
+('topic2', 'learning Search Engines', 'https://seodesignchicago.com/wp-content/uploads/2019/10/search-engines.png', 2, 1);
 
-INSERT INTO lms_attend(student_id, course_id) 
-OVERRIDING SYSTEM VALUE
+INSERT INTO lms_attend(student_id, course_id, approved) 
+VALUES 
+(1, 1, '1'),
+(2, 1, '1');
+
+INSERT INTO lms_message(student_id, teacher_id, topic, text) 
+VALUES 
+(1, 1, 'exams', 'when is exams?'),
+(2, 1, 'lectures', 'where is the lecture?');
+
+
+INSERT INTO lms_assign_courses(teacher_id, course_id)
 VALUES 
 (1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1);
-
-INSERT INTO lms_message(student_id, teacher_id, topic, text, timestamp) 
-OVERRIDING SYSTEM VALUE
-VALUES 
-(1, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(2, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(3, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(4, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(5, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(6, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(7, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(8, 1, null, 'abc', TIMESTAMP '2022-05-20'),
-(9, 1, null, 'abc', TIMESTAMP '2022-05-20');
-
-INSERT INTO lms_register(admin_id, teacher_id, course_id)
-OVERRIDING SYSTEM VALUE
-VALUES 
-(1, 1, 1),
-(1, 1, 2),
-(1, 1, 3);
+(1, 2),
+(1, 3);
