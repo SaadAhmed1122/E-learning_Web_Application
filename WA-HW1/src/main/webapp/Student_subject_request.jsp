@@ -1,5 +1,5 @@
+<%@page import="MVC.Controller.DatabaseConnection"%>
 <%@ page import="java.sql.Connection" %>
-<%@ page import="MVC.Controller.DatabaseConnection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
@@ -11,9 +11,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Student Subject Request</title>
     <meta charset="utf-8">
-
+    <title>Student Subject Request</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styling/main.css" rel="stylesheet">
@@ -22,17 +21,24 @@
 <body>
 <%@ include file="styling/header.jsp" %>
 
-<h3>Request</h3>
+<center><h1>Request of Student for subject</h1></center>
 
-<div class="progress-table">
-    <form class="form-default" action="./Approve_student_response.jsp" method="POST">
-        <div class="table-head">
-            <div class="id">Student Id</div>
-            <div class="name">Student Name</div>
-            <div class="email">Email</div>
-           <div class="course_name">Course Name</div>
-            <div class="accept">Accept / Decline</div>
-        </div>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-sm-8">
+    <div class="panel-body">
+            <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
+
+            <form class="form-default" action="./Approve_student_response.jsp" method="POST">
+                <thead>
+                <tr>
+
+            <th class="name">Student Name</th>
+            <th class="email">Email</th>
+           <th class="course_name">Course Name</th>
+            <th class="accept">Accept / Decline</th>
+                </tr>
+                </thead>
 
         <%
             try
@@ -46,13 +52,14 @@
                 if (rs == null)
                 {
         %>
-        <div class="table-row">
-            <div class="name">
+                <tbody>
+                <tr>
+                    <td>
                 <%
                     out.println("No Pending request");
                 %>
-            </div>
-        </div>
+                    </td>
+                </tr>
         <%
             }
                 else{
@@ -60,10 +67,8 @@
             {
 
                 %>
-        <div class="table-row">
-            <div class="id">
-                <%= rs.getInt(1) %>
-            </div>
+                <tr>
+
 
                 <%
                 int student_id= rs.getInt(1) ;
@@ -75,12 +80,12 @@
                     {
                 %>
 
-            <div class="name">
+            <td>
                 <%= rs2.getString(1) %>
-            </div>
-            <div class="email">
+            </td>
+            <td>
                 <%= rs2.getString(2) %>
-            </div>
+            </td>
 
                 <%
                     }
@@ -94,15 +99,15 @@
 
         %>
 
-            <div class="course_name">
+           <td>
                 <%= rs3.getString(1) %>
-            </div>
+            </td>
             <%
                 }
             %>
 
-            <div class="accept"><input type="checkbox" name="subjects" value="<%= rs.getInt(2)%>"></div>
-        </div>
+            <td><input type="checkbox" name="subjects" value="<%= rs.getInt(2)%>"></td>
+        </tr>
         <%
 
             }
@@ -116,16 +121,20 @@
                 out.println(e);
             }
         %>
+                </tbody>
+            </table>
         <div class="form-input pt-30 request">
             <input class="genric-btn primary-border" type="submit" name="accept_subject" value="Accept Request">
         </div>
         <div class="form-input pt-30 request">
             <input class="genric-btn primary-border" type="submit" name="reject" value="Delete Requests">
         </div>
-    </form>
-</div>
+            </form>
 
-
+                </div>
+                </div>
+                </div>
 
 </body>
+<%@ include file="styling/footer.jsp" %>
 </html>

@@ -197,6 +197,11 @@ margin-top: 5px;
                 <i class="zmdi zmdi-info-outline"><span class="glyphicon glyphicon-plus"></span></i> Course Requests
               </a>
             </li>
+              <li >
+                  <a  href="showassignteacher.jsp">
+                  <i class="zmdi zmdi-info-outline"><span class="glyphicon glyphicon-copy"></span></i> Show Assigned Courses
+                  </a>
+              </li>
             
             <li><a href="logout.jsp"><i class="zmdi zmdi-info-outline"><span class="glyphicon glyphicon-log-out"></span></i> Logout</a></li>
             
