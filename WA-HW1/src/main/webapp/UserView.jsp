@@ -1,4 +1,5 @@
-<%@ page import="java.sql.*" %><%--
+<%@ page import="java.sql.*" %>
+<%@ page import="MVC.Controller.DatabaseConnection" %><%--
   Created by IntelliJ IDEA.
   User: Saad
   Date: 4/10/2022
@@ -24,13 +25,6 @@
     <title>Admin panel</title>
 </head>
 <body>
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
-
-%>
 <%--<center>--%>
 <%--    <h1>Student Management</h1>--%>
 <%--    <h2>--%>
@@ -150,7 +144,8 @@
 <%--    </table>--%>
 <%--</div>--%>
 <%@ include file="styling/header.jsp" %>
-<h1>Student Managment System </h1>
+<center>
+<h1>Student Management Section</h1></center>
 </br>
 <div class="row">
 <%--    <div class="col-sm-4">--%>
@@ -192,12 +187,13 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>gender</th>
+                                <th>Gender</th>
                                 <th>Date of Birth</th>
                                 <th>Address</th>
                                 <th>Approval</th>
                                 <th>Actions</th>
                             </tr>
+                            </thead>
 
                     <%
 
@@ -205,9 +201,7 @@
                                 PreparedStatement pst;
                                 ResultSet rs;
 
-                                Class.forName("org.postgresql.Driver");
-                                con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/LMS","postgres", "root");
-
+                               con= DatabaseConnection.initializeDatabase();
                                   String query = "select * from lms_student";
                                   Statement st = con.createStatement();
 
@@ -217,9 +211,9 @@
                                         {
                                             int student_id = rs.getInt("student_id");
                                    %>
-
+            <tbody>
                 <tr>
-                    <td><%=rs.getString("student_id") %></td>
+                    <td scope="row"><%=rs.getString("student_id") %></td>
                     <td><%=rs.getString("name") %></td>
                     <td><%=rs.getString("email") %></td>
                     <td><%=rs.getString("gender") %></td>
@@ -227,13 +221,13 @@
                     <td><%=rs.getString("address") %></td>
                     <td><%=rs.getString("approved") %></td>
 
-                    <td><a href="updatestd.jsp?id=<%=student_id%>">Edit</a></td>
-                    <td><a href="deletestd.jsp?id=<%=student_id%>&teacher_id=0">Delete</a></td>
+                    <td><a class='btn btn-primary btn-sm' href="updatestd.jsp?id=<%=student_id%>"><span class="glyphicon glyphicon-edit"></span> Edit</a>   
+                        <a class="btn btn-danger btn-sm" href="deletestd.jsp?id=<%=student_id%>&teacher_id=0"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    </td>
                 </tr>
-
+            </tbody>
 
                     <%
-                    con.close();
 
                                  }
                                %>

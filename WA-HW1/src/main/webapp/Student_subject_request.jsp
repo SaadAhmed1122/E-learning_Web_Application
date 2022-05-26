@@ -1,5 +1,5 @@
+<%@page import="MVC.Controller.DatabaseConnection"%>
 <%@ page import="java.sql.Connection" %>
-<%@ page import="MVC.Controller.DatabaseConnection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.

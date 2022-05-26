@@ -82,13 +82,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </head>
 <body>
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
-
-%>
 <h1>Student Update</h1>
 <div class="row">
     <div class="col-sm-4">

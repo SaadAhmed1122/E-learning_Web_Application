@@ -12,8 +12,6 @@
 </head>
 <body>
 <%--//<jsp:forward page="/TeacherControllerServlet?action=listUser1"/>--%>
-<%--<jsp:forward page="TeacherControllerServlet?action=listUser"/>--%>
-
-<h1>Testing</h1>
+<jsp:forward page="TeacherControllerServlet?action=listUser"/>
 </body>
 </html>

@@ -78,8 +78,7 @@ public class AddCourseServlet extends HttpServlet {
 
                 if(assigncoursedao.equals("SUCCESS REGISTER")){
 
-                    RequestDispatcher requestDispatcher = req
-                            .getRequestDispatcher("./addcoursesandteacher.jsp");
+                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("./addcoursesandteacher.jsp");
                     requestDispatcher.forward(req, resp);
 
                 }

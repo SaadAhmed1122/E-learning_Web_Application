@@ -10,104 +10,116 @@
         <link href="styling/main.css" rel="stylesheet">
     </head>
 
-    <body>
-    <%
-        if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-        {
-            response.sendRedirect("index.jsp");
-        }
-
-    %>
+<body>
     <%@ include file="styling/header.jsp" %>
-
-    <h3>Request</h3>
-    <div class="progress-table">
+<center>
+    <h1>Student Requests</h1>
+    </center>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-sm-8">
+            <div class="panel-body">
+                <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                     <form class="form-default" action="admin_student_requests_action.jsp" method="POST">
-                        <div class="table-head">
-                            <div class="id">Student Id</div>
-                            <div class="name">Name</div>
-                            <div class="email">Email</div>
-                            <div class="gender">Gender</div>
-                            <div class="dob">BirthDate</div>
-                            <div class="address">Address</div>
-                            <div class="accept">Accept / Decline</div>
-                        </div>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Gender</th>                                
+                                <th>DOB</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                                
+                            </tr>
+                        </thead>
 
+                       <%
+                        try
+                        {
+                        Connection con = DatabaseConnection.initializeDatabase();
+                        // create a SQL statement
+                        Statement stmt = con.createStatement();
+                        String sql = "select student_id,name, email, gender, birthdate,address from lms_student where approved = false";
 
+                        // execute the statement
+                        ResultSet rs = stmt.executeQuery (sql);
 
-                        <%
-		try
-		{
-            Connection con = DatabaseConnection.initializeDatabase();
+                        // for no requests pending 
+                        if (rs == null)
+                            {
+                        %>
+                        <tbody>
+                            <tr>
+                                <<td>
 
-            // create a SQL statement
-			Statement stmt = con.createStatement();
-			String sql = "select student_id,name, email, gender, birthdate,address from lms_student where approved = false";
-
-			// execute the statement
-			ResultSet rs = stmt.executeQuery (sql);
-
-			// for no requests pending 
-			if (rs == null)
-			{
-%>
-                            <div class="table-row">
-                                <div class="name">
-                                    <%
-						out.println("No Pending request");
-%>
-                                </div>
-                            </div>
-                            <%
-			}
-
-			while(rs.next())
-			{
-%>
-                                <div class="table-row">
-                                    <div class="id">
-                                        <%= rs.getInt(1) %>
-                                    </div><div class="name">
-                                        <%= rs.getString(2) %>
-                                    </div>
-                                    <div class="email">
-                                        <%= rs.getString(3) %>
-                                    </div>
-                                    <div class="gender">
-                                        <%= rs.getString(4) %>
-                                    </div>
-                                    <div class="dob">
-                                        <%= rs.getString(5) %>
-                                    </div>
-                                    <div class="address">
-                                        <%= rs.getString(6) %>
-                                    </div>
-
-                                    <div class="accept"><input type="checkbox" name="ad" value="<%= rs.getInt(1)%>"></div>
-                                </div>
                                 <%
-			}
+                                    out.println("No Pending request");
+                                %>
+                                </td>
+                            </tr>
+                            <%
+                                }
 
-			// close the connection
-			stmt.close();
-			con.close();
-		}
-		catch (Exception e)
-		{
-			out.println(e);
-		}
-%>
-                                    <div class="form-input pt-30 request">
-                                        <input class="genric-btn primary-border" type="submit" name="accept" value="Accept Request">
-                                    </div>
-                                    <div class="form-input pt-30 request">
-                                        <input class="genric-btn primary-border" type="submit" name="reject" value="Delete Requests">
-                                    </div>
+                                while(rs.next())
+                                {
+                            %>
+                            <tr>
+                                <td>
+                                    <%= rs.getInt(1) %>
+                                </td>
+                                
+                                <td>
+                                    <%= rs.getString(2) %>
+                                </td>
+                                
+                                <td>
+                                    <%= rs.getString(3) %>
+                                </td>
+                                
+                                <td>
+                                    <%= rs.getString(4) %>
+                                </td>
+                                
+                                <td>
+                                    <%= rs.getString(5) %>
+                                </td>
+                                
+                                <td>
+                                    <%= rs.getString(6) %>
+                                </td>
+
+                                <td><input type="checkbox" name="ad" value="<%= rs.getInt(1)%>"></td>
+                            </tr>
+
+                                 <%
+                                    }
+                                    // close the connection
+                                    stmt.close();
+                                    con.close();
+                                    }
+                                    catch (Exception e)
+                                    {
+                                            out.println(e);
+                                    }
+                                 %>
+                        </tbody>
+                </table>
+                        <div class="form-input pt-30 request">
+                            <button class="btn btn-success" type="submit" name="accept" value="Accept Requests"><span class="glyphicon glyphicon-plus-sign"></span> Accept Request</button>
+                            
+                        </div>
+                        <div class="form-input pt-30 request">
+                            <button class="btn btn-danger" type="submit" name="reject" value="Delete Requests"><span class="glyphicon glyphicon-trash"></span> Delete Requests</button>
+                            
+                        </div>
                     </form>
+                    
+            </div>
+        </div>
     </div>
 
-
-
-    </body>
+</body>
 <%@ include file="styling/footer.jsp" %>
-    </html>
+</html>

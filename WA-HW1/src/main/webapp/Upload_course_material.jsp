@@ -18,8 +18,8 @@
     }
 
 %>
-<%@ include file="styling/header.jsp" %>
-<h1>Teacher Registration Form</h1>
+
+<h1>Uplaod Material</h1>
 <br>
 
 <%

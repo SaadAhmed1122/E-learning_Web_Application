@@ -8,15 +8,6 @@
   Time: 5:30 PM
   To change this template use File | Settings | File Templates.
 --%>
-
-
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
-
-%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     if(request.getParameter("submit")!=null)

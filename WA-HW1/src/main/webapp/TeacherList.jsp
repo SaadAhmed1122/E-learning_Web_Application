@@ -1,5 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="MVC.Controller.DatabaseConnection" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,30 +12,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Teacher Management</title>
 </head>
 <body>
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
+<%@ include file="styling/header.jsp"%>
+<center><h1>Teachers Management Section</h1> </center>
 
-%>
-<%@ include file="styling/header.jsp" %>
-<h1>Teachers</h1>
-<a href="teacher_register.jsp" ><h2 style="margin-left: 800px;">Add Teacher</h2></a>
+
+
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-sm-8">
         <div class="panel-body">
+            <a href="teacher_register.jsp" class='m btn btn-success'><span class="glyphicon glyphicon-plus-sign"></span> Add Teacher</a>
             <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>gender</th>
+                    <th>Gender</th>
                     <th>Address</th>
                     <th>Actions</th>
                 </tr>
@@ -53,6 +50,7 @@
                                         {
                                             int teacher_id = rs.getInt("teacher_id");
                                    %>
+                <tbody>
                 <tr>
                     <td><%=rs.getString("teacher_id") %></td>
                     <td><%=rs.getString("name") %></td>
@@ -62,12 +60,12 @@
 
 
 <%--                    <td><a href="TeacherControllerServlet?action=edit&teacher_id=<%=teacher_id%>">Edit</a></td>--%>
-                    <td><a href="teacher_update.jsp?id=<%=teacher_id%>">Edit</a></td>
-                    <td><a href="deletestd.jsp?teacher_id=<%=teacher_id%>&id=0">Delete</a></td>
-
+                    <td><a class='btn btn-primary btn-sm' href="teacher_update.jsp?id=<%=teacher_id%>"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a class="btn btn-danger btn-sm" href="deletestd.jsp?teacher_id=<%=teacher_id%>&id=0"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    </td>
                 </tr>
+                </tbody>
                     <%
-
                                  }
                                %>
             </table>

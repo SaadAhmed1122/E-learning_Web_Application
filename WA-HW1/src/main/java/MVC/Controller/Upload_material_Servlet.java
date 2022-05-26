@@ -41,14 +41,16 @@ public class Upload_material_Servlet extends HttpServlet {
 
             if(msg.equals("SUCCESS UPLOAD")){
 
-//                 Error in Redirect
-                RequestDispatcher requestDispatcher = req
-                        .getRequestDispatcher("./teacher_main.jsp");
-                requestDispatcher.forward(req, resp);
+//                TODO: Error in Redirect
+//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./teacher_main.jsp");
+//                requestDispatcher.forward(req, resp);
+
+                req.getRequestDispatcher("./teacher_main.jsp").forward(req, resp);
+//              resp.sendRedirect("./teacher_main.jsp");
             }
             else {
                 req.setAttribute("SUCCESS UPLOAD",msg);
-                RequestDispatcher re= req.getRequestDispatcher("./Upload_course_material.jsp");
+                RequestDispatcher re= req.getRequestDispatcher("./teacher_main.jsp");
                 re.include(req,resp);
             }
         }

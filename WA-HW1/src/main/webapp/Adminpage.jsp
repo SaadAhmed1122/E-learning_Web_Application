@@ -14,7 +14,7 @@
 <body>
 <%@ include file="styling/header.jsp" %>
 <center>
-    <h2>
+    <h1>
         <%
             if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
             {
@@ -22,14 +22,15 @@
             }
 
         %>
-        Wellcome,<%= session.getAttribute("login_admin")%>
+        Welcome,<%= session.getAttribute("login_admin")%>
 
         <a href="./StudentManagmentServlet"> <input type="button" name="showstudent" value="Student List"></a>
-
+        
+        <!--
         <h3 style="text-align: end">
             <a href="logout.jsp">Logout</a>
-        </h3>
-    </h2>
+        </h3>-->
+    </h1>
 </center>
 </body>
 <%@ include file="styling/footer.jsp" %>
