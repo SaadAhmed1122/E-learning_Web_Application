@@ -41,7 +41,7 @@ public class Upload_material_Servlet extends HttpServlet {
 
             if(msg.equals("SUCCESS UPLOAD")){
 
-//                TODO: Error in Redirect
+//
 //                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./teacher_main.jsp");
 //                requestDispatcher.forward(req, resp);
 
