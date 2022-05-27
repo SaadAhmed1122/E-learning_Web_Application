@@ -97,7 +97,10 @@
                         <th>Prerequisite</th>
                         <th><input multiple="multiple" class="form-group"  id="prereq" name="prereq" placeholder="Prerequisite" title="Make a list of Prerequisite of the course" required></th>
                     </tr>
+
+                    <div>${RegisterSuccessMsg}</div>
                     <tr>
+
                         <th><a class="btn btn-danger" href="Adminpage.jsp">Cancel</a></th>
                         <th><input class="btn btn-info" type="submit" name="btn_register" value="Register"></th>
                     </tr>

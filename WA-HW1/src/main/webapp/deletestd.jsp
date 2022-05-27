@@ -20,10 +20,14 @@
     int id = Integer.parseInt(request.getParameter("id"));
     int teacher_id = Integer.parseInt(request.getParameter("teacher_id"));
     PreparedStatement pst;
-    PreparedStatement pst2;
+    PreparedStatement pst2,pst3;
     ResultSet rs;
     Connection con = DatabaseConnection.initializeDatabase();
     pst = con.prepareStatement("delete from lms_student where student_id = ?");
+
+    pst3 = con.prepareStatement("delete from lms_assign_courses where teacher_id = ?");
+    pst3.setInt(1,teacher_id);
+    pst3.executeUpdate();
     pst2 = con.prepareStatement("delete from lms_teacher where teacher_id = ?");
     if(id != 0){
         pst.setInt(1, id);
@@ -40,7 +44,7 @@
 
 <script>
 
-    alert("Record Deletee");
+    alert("Record Delete");
 <%--    <c:redirect url="/Adminpage.jsp"/>--%>
 
 </script>
