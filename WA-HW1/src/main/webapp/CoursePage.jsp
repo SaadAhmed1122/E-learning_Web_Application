@@ -14,11 +14,63 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Course List</title>
+    <title>Course</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        background-image: url("./assets/images/bg.jpg");
+        background-color: #cccccc;
+    }
+
+    /* Toggle Styles */
+
+    h1{
+        padding-top: 30px;
+        margin-top: 0 !important;
+        margin: 0 !important;
+    }
+    element.style {
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        background-color: beige;
+    }
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+
+
+</style>
 <body>
-<h1>Welcome to Course Page</h1>
-<center>
+<center><h1>Welcome to Course Page</h1></center>
+
         <%
             if(session.getAttribute("login")==null || session.getAttribute("login")=="")
             {
@@ -26,7 +78,7 @@
             }
 
         %>
-        <%@ include file="styling/header.jsp" %>
+<%--        <%@ include file="styling/header.jsp" %>--%>
         <div class="row">
             <div class="col-md-2">
 

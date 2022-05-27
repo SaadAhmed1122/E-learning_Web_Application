@@ -14,31 +14,87 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Inbox</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        background-image: url("./assets/images/bg.jpg");
+        background-color: #cccccc;
+    }
+
+    /* Toggle Styles */
+
+    h1{
+        padding-top: 30px;
+        margin-top: 0 !important;
+        margin: 0 !important;
+    }
+    element.style {
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        background-color: beige;
+    }
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+
+
+</style>
 <body>
-    <h1>Messaging Page</h1>
-    <center>
+    <center><h1>Messaging Page</h1></center>
+
             <%
                 if (session.getAttribute("login") == null || session.getAttribute("login") == "") {
                     response.sendRedirect("index.jsp");
                 }
-
             %>
-        <%@ include file="styling/header.jsp" %>
+<%--        <%@ include file="styling/header.jsp" %>--%>
         <br>
-        <div class="col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+
             <form method="post" action="./MessagingController" onsubmit="return validate();">
+                <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
+                    <thead>
+                    <tr>
+                    <th><label for="topic">Enter Topic</label></th>
+                    <th><input class="form-group" type="text" name="topic" id="topic" placeholder="Topic" title="Enter Topic"></th>
+                </tr>
 
-                <div class="form-group">
-                    <label for="topic">Enter Topic</label>
-                    <input class="form-group" type="text" name="topic" id="topic" placeholder="Topic" title="Enter Topic">
-                </div>
-
-                <div class="form-group">
-                    <label for="text">Enter Your Message</label>
-                    <input class="form-group" type="text" name="text" id="text" placeholder="Text" title="Type Your Message">
-                </div>
+                <tr >
+                    <th><label for="text">Enter Your Message</label></th>
+                   <th> <input class="form-group" type="text" name="text" id="text" placeholder="Text" title="Type Your Message"></th>
+                </tr>
 
                 <%
                     int stud_id = 0;
@@ -67,21 +123,30 @@
 
                     rs = st.executeQuery(query);
                 %>
-                <div class=" form-group">
-                    <label for="teacher">Select teacher</label>
-                    <select class="form-group" name = "teacherdropdown" id="teacher">
+                <tr >
+                    <th><label for="teacher">Select teacher</label></th>
+                    <th><select class="form-group" name = "teacherdropdown" id="teacher">
                         <% while(rs.next()) {  %>
                         <option value = "<%= rs.getString("teacher_id")%>" selected><%=rs.getString("name")%></option>
                         <% }  %>
                     </select>
+                    </th>
                     <input type="hidden" name="student_id" value="<%=stud_id%>"/>
-                </div>
+                </tr>
 
                 <br>
+                    <tr>
+                        <th>
                 <input class="btn btn-primary" type="submit" name="btn_send" value="Send">
-                <h3><a href="StudentPanel.jsp">Cancel</a></h3>
-
+                        </th></tr>
+                    <tr>
+                        <th>
+                            <h3><a href="StudentPanel.jsp">Cancel</a></h3></th></tr>
+                    </thead>
+                </table>
             </form>
+            </div>
+            <div class="col-md-3"></div>
         </div>
 </body>
 </html>

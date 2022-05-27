@@ -57,7 +57,7 @@
                 <tr>
                     <td><%=rs.getString("name")%></td>
                     <td><%=rs.getString("description")%></td>
-<%--                    <td><%=rs.getString("prerequistie")%></td>--%>
+                    <%--                    <td><%=rs.getString("prerequistie")%></td>--%>
                     <td><a href="Teacher_course_list.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
                 </tr>
                     <%
