@@ -35,7 +35,7 @@ public class AddCourseServlet extends HttpServlet {
             String registercourse= courseDao.insertCourse(courseBean);
 
             if(registercourse.equals("SUCCESS REGISTER")){
-
+                req.setAttribute("RegisterSuccessMsg",registercourse);
                 RequestDispatcher requestDispatcher = req
                         .getRequestDispatcher("./addcoursesandteacher.jsp");
                 requestDispatcher.forward(req, resp);

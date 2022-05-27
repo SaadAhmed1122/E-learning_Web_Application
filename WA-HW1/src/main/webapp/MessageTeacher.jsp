@@ -133,7 +133,7 @@
                     </th>
                     <input type="hidden" name="student_id" value="<%=stud_id%>"/>
                 </tr>
-
+                    <div>${RegisterSuccessMsg}</div>
                 <br>
                     <tr>
                         <th>

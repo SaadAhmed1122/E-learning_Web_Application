@@ -30,7 +30,7 @@
         PreparedStatement pst;
         ResultSet rs;
         Connection con = DatabaseConnection.initializeDatabase();
-        pst = con.prepareStatement("update lms_teacer set name = ?,email =?,gender= ? ,address=? where teacher_id = ?");
+        pst = con.prepareStatement("update lms_teacher set name = ?,email =?,gender= ? ,address=? where teacher_id = ?");
 
 
         // pst.setInt(0, student_id);
