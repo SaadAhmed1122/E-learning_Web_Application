@@ -1,3 +1,5 @@
+Complete project is uploaded in HW 1 folder, with its presentation in HW2 folder.
+Please change the Postgre username and password in "Database Connection" file before running the project accroding to your own system username and password.
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
 When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
