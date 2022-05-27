@@ -40,10 +40,11 @@
         %>
         Welcome,<%= session.getAttribute("login_admin")%>
 
-        <a href="./StudentManagmentServlet"> <input type="button" name="showstudent" value="Student List"></a>
+<%--        <a href="./StudentManagmentServlet">--%>
+<%--            <input type="button" name="showstudent" value="Student List"></a>--%>
 
         <div class="flex_container">
-            <div class="flex_item">Total Students<br>
+            <div class="flex_item"><br><span class="glyphicon glyphicon-user" style="font-size: 70px; color: blue" aria-hidden="true"></span> <br><br><br> Total Students<br>
                 <%
                     Connection con;
                     ResultSet rs0;
@@ -64,7 +65,7 @@
                     }
                 %>
             </div>
-            <div class="flex_item">Total Teachers<br>
+            <div class="flex_item"><br><span class="glyphicon glyphicon-education" style="font-size: 70px; " aria-hidden="true"></span> <br><br><br>Total Teachers<br>
                 <%
                     ResultSet rs1;
                     con = DatabaseConnection.initializeDatabase();
@@ -81,7 +82,7 @@
                     }
                 %>
             </div>
-            <div class="flex_item">Total Courses<br>
+            <div class="flex_item"><br><span class="glyphicon glyphicon-book" style="font-size: 70px; color: red" aria-hidden="true"></span> <br><br><br>Total Courses<br>
                 <%
                     ResultSet rs2;
                     con = DatabaseConnection.initializeDatabase();

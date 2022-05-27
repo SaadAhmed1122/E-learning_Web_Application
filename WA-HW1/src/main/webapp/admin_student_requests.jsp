@@ -24,7 +24,7 @@
                     <form class="form-default" action="admin_student_requests_action.jsp" method="POST">
                         <thead>
                             <tr>
-                                <th>ID</th>
+
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Gender</th>                                
@@ -66,9 +66,7 @@
                                 {
                             %>
                             <tr>
-                                <td>
-                                    <%= rs.getInt(1) %>
-                                </td>
+
                                 
                                 <td>
                                     <%= rs.getString(2) %>

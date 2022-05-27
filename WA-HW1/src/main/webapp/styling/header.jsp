@@ -172,7 +172,7 @@ margin-top: 5px;
             </li>
             <li>
               <a href="UserView.jsp">
-                <i class="zmdi zmdi-link"><span class="glyphicon glyphicon-education"></span></i> Add Student
+                <i class="zmdi zmdi-link"><span class="glyphicon glyphicon-education"></span></i> Student List
               </a>
             </li>
             <li>

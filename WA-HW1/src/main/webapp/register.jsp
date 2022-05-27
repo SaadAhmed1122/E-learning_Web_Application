@@ -138,7 +138,7 @@
 
 						<div class="form-row">
 							<div class="form-group col-md-12">
-								<input type="text" class="form-control formforstd" id="inputPassword4" placeholder="Address" name="password" required>
+								<input type="text" class="form-control formforstd" id="inputPassword4" placeholder="Address" name="address" required>
 							</div>
 						</div>
 

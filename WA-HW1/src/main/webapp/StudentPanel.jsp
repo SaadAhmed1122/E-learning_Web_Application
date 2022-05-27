@@ -65,6 +65,9 @@
         position: relative;
         margin-right: 0;
     }
+    .red{
+        font-color: red;
+    }
 
 
 </style>
@@ -97,14 +100,15 @@
         <div class="col-md-8">
             <div class="panel-body">
                 <h1>Student Dashboard</h1>
-                <p>Welcome, <%=student_name%>!</p>
+                <p>Welcome, <label class="red"><%=student_name%>!</label>                 <a class="btn btn-danger" href="logout.jsp">Logout</a></p>
 
 
-<%--                Model --%>
+
+
+            <%--                Model --%>
     <!-- Trigger the modal with a button -->
     <a href="MessageTeacher.jsp" class="btn btn-info" role="button">Send Message</a>
     <button type="button" class='m btn btn-success' data-toggle="modal" data-target="#requestmodel"><span class="glyphicon glyphicon-plus-sign"></span> Request New Course</button>
-                <a href="logout.jsp">Logout</a>
 
             <div>
                 <h1></h1>
@@ -199,7 +203,7 @@
                         </td>
                         <td><%=rs.getString("prerequistie")%>
                         </td>
-                        <td><a href="CoursePage.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
+                        <td><a class="btn btn-info" href="CoursePage.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
                     </tr>
                         <%
                 }

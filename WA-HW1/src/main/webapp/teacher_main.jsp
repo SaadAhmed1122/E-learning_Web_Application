@@ -13,28 +13,89 @@
 <html>
 <head>
     <title>Teacher</title>
+    <link rel="icon" type="image/png" href="./assets/images/iict.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        background-image: url("./assets/images/bg.jpg");
+        background-color: #cccccc;
+    }
+
+    /* Toggle Styles */
+
+    h1{
+        padding-top: 30px;
+        margin-top: 0 !important;
+        margin: 0 !important;
+    }
+    element.style {
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        background-color: beige;
+    }
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+    .red{
+        font-color: red;
+    }
+
+
+</style>
 <body>
 <%
     if (session.getAttribute("login_teacher_email") == null || session.getAttribute("login_teacher_email") == "") {
         response.sendRedirect("index.jsp");
     }
 %>
-<h1>Welcome Teacher</h1>
 
-<h1>Dashboard</h1>
 
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-sm-8">
         <div class="panel-body">
+            <center>
+            <h1>Welcome Teacher</h1>
+
+            <h1>Dashboard <a class="btn btn-danger" href="logout.jsp">Logout</a></h1>
+            </center><br><br>
+
+
             <table id="tbl-courses" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
                 <thead>
                 <tr>
                     <th>Course Name</th>
                     <th>Course Description</th>
 
-                    <th>View Course</th>
+                    <th>Action</th>
                 </tr>
                     <%
                 Connection con;
@@ -58,7 +119,7 @@
                     <td><%=rs.getString("name")%></td>
                     <td><%=rs.getString("description")%></td>
                     <%--                    <td><%=rs.getString("prerequistie")%></td>--%>
-                    <td><a href="Teacher_course_list.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
+                    <td><a class="btn btn-info" href="Teacher_course_list.jsp?id=<%=rs.getString("course_id")%>">View</a></td>
                 </tr>
                     <%
                     con.close();
@@ -66,11 +127,9 @@
                 %>
             </table>
         </div>
-        <a href="TeacherMessageInbox.jsp?teacher_id=<%=teacher_id%>" class="btn btn-info btn-lg" role="button">Message Inbox</a>
+        <a class="btn btn-success" href="TeacherMessageInbox.jsp?teacher_id=<%=teacher_id%>" class="btn btn-info btn-lg" role="button">Message Inbox</a>
     </div>
 </div>
-<h3>
-    <a href="logout.jsp">Logout</a>
-</h3>
+
 </body>
 </html>

@@ -38,6 +38,21 @@ comment -->
 </head>
 
 <body>
+<%
+	if(!(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")==""))
+	{
+		response.sendRedirect("Adminpage.jsp");
+	}
+	else if(!(session.getAttribute("login_teacher_email")==null || session.getAttribute("login_teacher_email")==""))
+	{
+		response.sendRedirect("teacher_main.jsp");
+	}
+	else if(!(session.getAttribute("login")==null || session.getAttribute("login")==""))
+	{
+		response.sendRedirect("StudentPanel.jsp");
+	}
+
+%>
 	<!--- login page --->
 	<div class="login-container d-flex align-items-center justify-content-center">
 		<form class="login-form text-center" method="post" action="./LoginController" name="LoginForm" onsubmit="return validate();">
@@ -76,6 +91,7 @@ comment -->
 				</div>
 				<a href="#">Forgot password?</a>
 			</div>
+			<div style="color:red">${WrongLoginMsg}</div>
 			<button type="submit" class="btn mt-4 btn-custom btn-block btn-lg" name="btn_login" value="Login">Login</button>
 			<p class="mt-3 font-weight-normal">Don't have an account? <a href="register.jsp"> <strong>Register here</strong></a></p>
 		</form>
