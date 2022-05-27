@@ -15,9 +15,67 @@
 <html>
 <head>
     <title>Course List</title>
+    <link rel="icon" type="image/png" href="./assets/images/iict.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+    body {
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        background-image: url("./assets/images/bg.jpg");
+        background-color: #cccccc;
+    }
+
+    /* Toggle Styles */
+
+    h1{
+        padding-top: 30px;
+        margin-top: 0 !important;
+        margin: 0 !important;
+    }
+    element.style {
+    }
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+    }
+    .table-bordered {
+        border: 1px solid #ddd;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table {
+        background-color: beige;
+    }
+
+    #viewport {
+        padding-left: 250px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    #content {
+        width: 100%;
+        position: relative;
+        margin-right: 0;
+    }
+    .red{
+        font-color: red;
+    }
+
+
+</style>
 <body>
+<center>
 <h1>Welcome to Course Page</h1>
+</center>
 <center>
         <%
             if(session.getAttribute("login_teacher_email")==null || session.getAttribute("login_teacher_email")=="")
@@ -40,9 +98,10 @@
                         rs = pst.executeQuery();
 
     %>
+            <a class="btn btn-success" href="Upload_course_material.jsp?course_id=<%=id%>" >Upload Material</a>
     <div class="row">
         <div class="col-md-2">
-            <a href="Upload_course_material.jsp?course_id=<%=id%>" ><h2 style="margin-left: 800px;">Upload Material</h2></a>
+
         </div>
         <div class="col-sm-8">
             <div class="panel-body">
@@ -67,6 +126,7 @@
                         <%
                                   }
                         %>
+                    </thead>
                 </table>
             </div>
         </div>

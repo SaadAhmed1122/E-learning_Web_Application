@@ -31,7 +31,6 @@ public class AddCourseServlet extends HttpServlet {
             courseBean.setDescription(desc);
             courseBean.setPrerequistie(prereq);
 
-
             CourseDao courseDao= new CourseDao();
             String registercourse= courseDao.insertCourse(courseBean);
 
@@ -49,48 +48,26 @@ public class AddCourseServlet extends HttpServlet {
             }
         }
 
-        if(req.getParameter("assign_course")!=null){
-            String teacher_name=req.getParameter("genderdropdown_teacher");
-            String course_name=req.getParameter("genderdropdown_course");
+        if(req.getParameter("submit_assign")!=null){
 
-            if (teacher_name !=null && course_name!=null)
-            {
-                System.out.println("Teacher_name : "+teacher_name);
-                System.out.println("Selected Value : "+course_name);
-                TeacherManagmentDao teacherDao= new TeacherManagmentDao();
-                TeacherBean teacher_data= teacherDao.getteacherByname(teacher_name);
+            int teacher_id = Integer.parseInt(req.getParameter("genderdropdown_teacher_admin"));
+            int course_id = Integer.parseInt(req.getParameter("genderdropdown_course_admin"));
 
-                int teacher_id = teacher_data.getTeacher_id();
+            Assign_course_Bean assignbeancourse = new Assign_course_Bean(teacher_id,course_id);
 
-                CourseDao courseDao= new CourseDao();
-                CourseBean courseBean= courseDao.getcourseByname(course_name);
-                System.out.println("Course Id  is "+courseBean.getCourse_id());
-                int course_id = courseBean.getCourse_id();
+            Assign_course_dao assign_cource_dao= new Assign_course_dao();
+            String assigncoursedao= assign_cource_dao.assigncoursefun(assignbeancourse);
 
-//                Assign Course
-                Assign_course_Bean assignbeancourse = new Assign_course_Bean(teacher_id,course_id);
-               assignbeancourse.setCourse_id(course_id);
-               assignbeancourse.setTeacher_id(teacher_id);
+            if(assigncoursedao.equals("SUCCESS ASSIGN")){
 
-
-                Assign_course_dao assign_cource_dao= new Assign_course_dao();
-                String assigncoursedao= assign_cource_dao.assigncoursefun(assignbeancourse);
-
-                if(assigncoursedao.equals("SUCCESS REGISTER")){
-
-                    RequestDispatcher requestDispatcher = req
-                            .getRequestDispatcher("./addcoursesandteacher.jsp");
-                    requestDispatcher.forward(req, resp);
-
-                }
-                else {
-                    req.setAttribute("RegisterSuccessError",assigncoursedao);
-                    RequestDispatcher re= req.getRequestDispatcher("./addcoursesandteacher.jsp");
-                    re.include(req,resp);
-                }
-
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./addcoursesandteacher.jsp");
+                requestDispatcher.forward(req, resp);
+            }
+            else {
+                req.setAttribute("RegisterSuccessError",assigncoursedao);
+                RequestDispatcher re= req.getRequestDispatcher("./addcoursesandteacher.jsp");
+                re.include(req,resp);
             }
         }
-
     }
 }

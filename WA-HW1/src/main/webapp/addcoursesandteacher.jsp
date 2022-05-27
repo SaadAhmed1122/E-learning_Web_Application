@@ -14,114 +14,102 @@
     <title>Add Course</title>
 </head>
 <body>
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
-
-%>
 <%@ include file="styling/header.jsp" %>
-<h1>Add Course</h1>
-<br>
-<div class="col-md-4">
-    <form method="post" action="./AddCourseServlet">
+<center><h1>Add Course</h1></center>
 
-        <div class="form-group">
-            <label for="coursename">Course Name</label>
-            <input class="form-group" type="text" name="coursename" id="coursename" placeholder="Course name" title="Enter Course Name" required>
-        </div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-sm-8">
+        <div class="panel-body">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class='m btn btn-success' data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus-sign"></span> Assign Course to Teacher</button>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Assign Course to Teacher</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>From Below boxes select the teacher and assign the subject</p>
+                            <form  method="POST" action=./AddCourseServlet >
+                                <%
+                                    PreparedStatement pst,pst2;
+                                    ResultSet rs,rs2;
 
-        <div class=" form-group">
-            <label for="desc">Course Description</label>
-            <input class="form-group" name="desc" id="desc" placeholder="Course Description" title="Course Description" required>
-        </div>
+                                    Connection con = DatabaseConnection.initializeDatabase();
 
+                                    pst = con.prepareStatement("select teacher_id, name from lms_teacher");
+                                    pst2 = con.prepareStatement("select course_id, name from lms_course where course_id not in (select course_id from lms_assign_courses)");
+                                    rs2= pst2.executeQuery();
+                                    rs = pst.executeQuery();
+                                %>
+                                <div class="col-md-4">
+                                    <div align="left">
+                                        <select name = "genderdropdown_teacher_admin">
+                                            <% while(rs.next()) {  %>
+                                            <option value = "<%= rs.getString("teacher_id")%>" selected><%= rs.getString("name")%></option>
+                                            <% }  %>
+                                        </select>
+                                    </div>
+                                </div>
+                                </br>
+                                <div class="col-md-4">
+                                    <div align="left">
+                                        <select name = "genderdropdown_course_admin">
+                                            <% while(rs2.next()) {  %>
+                                            <option value = "<%= rs2.getString("course_id")%>" selected><%= rs2.getString("name")%></option>
+                                            <% }  %>
+                                        </select>
+                                    </div>
+                                </div>
+                                </br>
+                                <div alight="right">
+                                    <input type="submit" id="submit_assign" value="submit_assign" name="submit_assign" class="btn btn-info">
+                                    <input type="reset" id="reset" value="Reset" name="reset" class="btn btn-warning">
+                                </div>
 
-        <div class=" form-group">
-            <label for="prereq">Prerequisite</label>
-            <input multiple="multiple" class="form-group"  id="prereq" name="prereq" placeholder="Prerequisite" title="Make a list of Prerequisite of the course" required>
-        </div>
-        <br>
-        <input class="btn btn-primary" type="submit" name="btn_register" value="Register">
-        <h3><a href="Adminpage.jsp">Cancel</a></h3>
-
-    </form>
-
-</div>
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Assign Course to Teacher</button>
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Assign Course to Teacher</h4>
+                                <div align="right">
+                                    <p><a href="addcoursesandteacher.jsp">Click Back</a></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>From Below boxes selected the teacher and assign the subject.</p>
-<%--                <form  method="POST" action="./AddCourseServlet" >--%>
-                <form  method="POST" action="./AddCourseServlet" >
-                        <%
-                PreparedStatement pst,pst2;
-                ResultSet rs,rs2;
-
-                Connection con = DatabaseConnection.initializeDatabase();
-//                int id = Integer.parseInt(request.getParameter("id"));
-                pst = con.prepareStatement("select * from lms_teacher");
-                pst2 = con.prepareStatement("select * from lms_course");
-                rs2= pst2.executeQuery();
-                rs = pst.executeQuery();
-
-
-            %>
-                    <div class="col-md-4">
-                            <div align="left">
-                                <select name = "genderdropdown_teacher">
-                                   <% while(rs.next()) {  %>
-                                    <option value = "<%= rs.getString("name")%>" selected><%= rs.getString("name")%></option>
-                                    <% }  %>
-                                </select>
-                            </div>
-                    </div>
-                </br>
-                    <div class="col-md-4">
-                            <div align="left">
-                                <select name = "genderdropdown_course">
-                                   <% while(rs2.next()) {  %>
-                                    <option value = "<%= rs2.getString("name")%>" selected><%= rs2.getString("name")%></option>
-                                    <% }  %>
-                                </select>
-                            </div>
-                    </div>
-
-                    </br>
-
-                    <div alight="right">
-                        <a href="index.jsp"> <input type="submit" id="submit" value="submit" name="assign_course" class="btn btn-info"></a>
-                        <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
-                    </div>
-
-                    <div align="right">
-
-                        <p><a href="addcoursesandteacher.jsp">Click Back</a></p>
-
-                    </div>
-
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            <form method="post" action="./AddCourseServlet">
+                <table id="tbl-student" class="table table-responsive table-bordered" cellpadding ="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th><input class="form-group" type="text" name="coursename" id="coursename" placeholder="Course name" title="Enter Course Name" required></th>
+                    </tr>
+                    <tr>
+                        <th>Course Description</th>
+                        <th><input class="form-group" name="desc" id="desc" placeholder="Course Description" title="Course Description" required></th>
+                    </tr>
+                    <tr>
+                        <th>Prerequisite</th>
+                        <th><input multiple="multiple" class="form-group"  id="prereq" name="prereq" placeholder="Prerequisite" title="Make a list of Prerequisite of the course" required></th>
+                    </tr>
+                    <tr>
+                        <th><a class="btn btn-danger" href="Adminpage.jsp">Cancel</a></th>
+                        <th><input class="btn btn-info" type="submit" name="btn_register" value="Register"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
         </div>
-
     </div>
 </div>
 
+
+<%@ include file="styling/footer.jsp" %>
 </body>
-<%--<%@ include file="styling/footer.jsp" %>--%>
+
 </html>

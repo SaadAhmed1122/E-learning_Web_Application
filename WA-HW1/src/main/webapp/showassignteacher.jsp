@@ -23,7 +23,7 @@
 
 %>
 <%@ include file="styling/header.jsp" %>
-<p1>Assign Courses list</p1>
+<center><h1>Assign Courses list</h1></center>
 
 <div class="row">
     <div class="col-md-2"></div>

@@ -10,6 +10,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import static java.lang.System.out;
 
 @WebServlet("/StudentRegistrationController")
 public class StudentRegistrationController extends HttpServlet {
@@ -27,7 +30,7 @@ public class StudentRegistrationController extends HttpServlet {
             String address= req.getParameter("address");
 
             String date=req.getParameter("birthday");
-            System.out.println("dateString:"+date);
+            out.println("dateString:"+date);
 
 
 //            String utilDate= null;
@@ -50,9 +53,17 @@ public class StudentRegistrationController extends HttpServlet {
             String registervalidate= registrationDao.authorizeRegister(registrationBean);
 
             if(registervalidate.equals("SUCCESS REGISTER")){
+//                PrintWriter out = resp.getWriter();
+//                out.println("<script type=\"text/javascript\">");
+//                out.println("alert('Successfull Register...');");
+//                out.println("location='index.jsp';");
+//                out.println("</script>");
+
                 req.setAttribute("RegisterSuccessMsg",registervalidate);
-                RequestDispatcher re = req.getRequestDispatcher("./Adminpage.jsp");
+                RequestDispatcher re = req.getRequestDispatcher("./index.jsp");
                 re.forward(req,resp);
+
+
             }
             else {
                 req.setAttribute("RegisterSuccessMsg",registervalidate);

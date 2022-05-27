@@ -21,7 +21,7 @@ import java.io.IOException;
 public class Upload_material_Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+//        su/per.doPost(req, resp);
         if(req.getParameter("upload_material")!= null){
             String topic=req.getParameter("topic");
             String Description= req.getParameter("Description");
@@ -41,14 +41,16 @@ public class Upload_material_Servlet extends HttpServlet {
 
             if(msg.equals("SUCCESS UPLOAD")){
 
-//                 Error in Redirect
-                RequestDispatcher requestDispatcher = req
-                        .getRequestDispatcher("./teacher_main.jsp");
-                requestDispatcher.forward(req, resp);
+//
+//                RequestDispatcher requestDispatcher = req.getRequestDispatcher("./teacher_main.jsp");
+//                requestDispatcher.forward(req, resp);
+
+                req.getRequestDispatcher("./teacher_main.jsp").forward(req, resp);
+//              resp.sendRedirect("./teacher_main.jsp");
             }
             else {
                 req.setAttribute("SUCCESS UPLOAD",msg);
-                RequestDispatcher re= req.getRequestDispatcher("./Upload_course_material.jsp");
+                RequestDispatcher re= req.getRequestDispatcher("./teacher_main.jsp");
                 re.include(req,resp);
             }
         }

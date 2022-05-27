@@ -1,0 +1,91 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+body{
+	font-family: sans-serif;
+	font-size: 14px;
+	background: url('../images/loginbg.jpg') no-repeat center center fixed;
+	background-size: cover;
+	color: #fff;
+}
+
+.login-container{
+	height: 100vh;
+	width: 100%;
+}
+.login-form{
+	max-width: 100%;
+	width: 370px;
+	padding: 15px;
+	margin: auto;
+}
+/*
+.form-control{
+	font-size: 15px;
+	min-height: 48px;
+	font-weight: 500;
+}*/
+.form-control {
+    font-size: 15px;
+    min-height: 48px;
+    font-weight: 500;
+    padding: 0px 42px;
+}
+i.fa.fa-user.user-icon {
+    font-size: 26px;
+    position: absolute;
+    display: block;
+    margin-top: 10px;
+    margin-left: 15px;
+    color: #e8c849;
+}
+i.fa.fa-lock.lock-icon{
+ 	font-size: 26px;
+    position: absolute;
+    display: block;
+    margin-top: 11px;
+    margin-left: 15px;
+    color: #e8c849;
+}
+input.form-control.form-control-lg {
+    border-radius: 25px 25px;
+}
+.form-control:focus {
+    border-color: #e8c849;
+    box-shadow: 0 0 0.2rem #ffc107;
+}
+button.btn.mt-4.btn-custom.btn-block.btn-lg{
+	border-radius: 25px 25px;
+}
+.forget-link{
+	font-size: 13px;
+}
+.forget-link label{
+	margin-bottom: 0;	
+}
+.login-form a{
+	text-decoration: none;
+	color: #fff;
+}
+.login-form a:hover{
+	color:#ffd401;
+}
+.btn-custom{
+	background: #e8c849;
+	border-color: #e8c849;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	min-height: 48px;
+}
+.btn-custom:focus,
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:active:focus{
+	background: #e8be16;
+	border-color: #e8be16;
+	color: #fff;
+}
+.btn-custom:focus{
+	box-shadow: 0 0 0.2rem #ffc107;
+}
+
+

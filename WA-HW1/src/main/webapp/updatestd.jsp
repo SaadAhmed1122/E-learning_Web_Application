@@ -46,12 +46,12 @@
         pst = con.prepareStatement("update lms_student set name = ?,email =?,gender= ? ,birthdate=?,address=?,approved=? where student_id = ?");
 
 
-       // pst.setInt(0, student_id);
+        // pst.setInt(0, student_id);
 
         pst.setString(1, name2);
         pst.setString(2, email_id);
 
-       // pst.setString(3, password);
+        // pst.setString(3, password);
 
         pst.setString(3, gender);
         pst.setString(4, date);
@@ -63,7 +63,7 @@
 %>
 
 <script>
-    alert("Record Updateddddd");
+    alert("Record Updated");
 </script>
 <%
     }
@@ -71,7 +71,7 @@
 %>
 <html>
 <head>
-    <title>Update Data Student</title>
+    <title>Students List</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
@@ -80,19 +80,19 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <title>Admin panel</title>
 </head>
 <body>
-<%
-    if(session.getAttribute("login_admin")==null || session.getAttribute("login_admin")=="")
-    {
-        response.sendRedirect("index.jsp");
-    }
 
-%>
-<h1>Student Update</h1>
+<%@ include file="styling/header.jsp" %>
+<center>
+    <h1>Student Management Section</h1></center>
+</br>
 <div class="row">
-    <div class="col-sm-4">
-        <form  method="POST" action="#" >
+
+    <div class="col-md-2"></div>
+    <div class="col-sm-8">
+        <div class="panel-body">
 
             <%
                 PreparedStatement pst;
@@ -109,58 +109,64 @@
                 {
 
             %>
-            <div alight="left">
-                <label class="form-label">Student Name</label>
-                <input type="text" class="form-control" placeholder="Student Name" value="<%= rs.getString("name")%>" name="name" id="name" required >
-            </div>
+            <form  method="POST" action="#" >
+                <div alight="left">
+                    <label class="form-label">Student Name</label>
+                    <input type="text" class="form-control" placeholder="Student Name" value="<%= rs.getString("name")%>" name="name" id="name" required >
+                </div>
 
-            <div alight="left">
-                <label class="form-label">Email</label>
-                <input type="text" class="form-control" placeholder="Email" name="email" value="<%= rs.getString("email")%>" id="email" required >
-            </div>
-            <div align="left">
-                <select name = "genderdropdown">
-                    <option value = "<%= rs.getString("gender")%>" selected></option>
-                    <option value = "Female">Female</option>
-                    <option value = "Male">Male</option>
-                </select>
-            </div>
+                <div alight="left">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" name="email" value="<%= rs.getString("email")%>" id="email" required >
+                </div>
 
-            <div align="left">
-                <input name="address" id="address" placeholder="Address" value="<%= rs.getString("address")%>">
-            </div>
-            <div class="left">
-                <label for="birthday">Birthday:</label>
-                <input type="date" id="birthday" name="birthday" value="<%= rs.getString("birthdate")%>">
-            </div>
+                <div align="left">
+                    <select name = "gender">
+                        <option value = "<%= rs.getString("gender")%>" selected><%= rs.getString("gender")%></option>
+                        <option value = "Female">Female</option>
+                        <option value = "Male">Male</option>
+                    </select>
+                </div>
+<%--                <div align="left">--%>
+<%--                    <label class="form-label">Gender</label>--%>
+<%--                    <input name="gender" disabled="" id="address" placeholder="Address" value="<%= rs.getString("gender")%>">--%>
+<%--                </div>--%>
 
-            <div align="left">
-                <input type="checkbox" name="approvaldropdown" value="<%= rs.getString("birthdate")%>"><%= rs.getString("birthdate")%><BR>
-                <input type="checkbox" name="approvaldropdown" value="true"> Approved<BR>
-                <input type="checkbox" name="approvaldropdown" value="false"> Deny<BR>
-            </div>
+                <div align="left">
+                    <label class="form-label">Address</label>
+                    <input name="address" id="address" type="text" placeholder="Address" value="<%= rs.getString("address")%>">
+                </div>
+                <div class="left">
+                    <label for="birthday">Birthday:</label>
+                    <input type="text" disabled id="birthday" name="birthday" value="<%= rs.getString("birthdate")%>">
+                </div>
 
-            <% }  %>
+                <div align="left">
 
+                    <input type="checkbox" name="approvaldropdown" value="true"> Approved<BR>
+                    <input type="checkbox" name="approvaldropdown" value="false"> Deny<BR>
+                </div>
 
-
-            </br>
-
-            <div alight="right">
-                <input type="submit" id="submit" value="submit" name="submit" class="btn btn-info">
-                <input type="reset" id="reset" value="reset" name="reset" class="btn btn-warning">
-            </div>
-
-            <div align="right">
-
-                <p><a href="UserView.jsp">Click Back</a></p>
+                <% }  %>
 
 
-            </div>
 
-        </form>
+                </br>
+
+                <div alight="right">
+                    <input type="submit" id="submit" value="Submit" name="submit" class="btn btn-info">
+                    <input type="reset" id="reset" value="Reset" name="reset" class="btn btn-warning">
+                </div>
+
+                <div align="right">
+
+                    <p><a href="UserView.jsp">Click Back</a></p>
+
+
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
-
 </body>
 </html>
