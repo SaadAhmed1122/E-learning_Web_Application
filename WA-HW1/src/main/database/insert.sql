@@ -1,5 +1,5 @@
 INSERT INTO lms_admin(email, password)
-VALUES('tore@admin.com', 'root');
+VALUES('tore@admin.com', 'Root@12345');
 
 INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved) 
 VALUES
