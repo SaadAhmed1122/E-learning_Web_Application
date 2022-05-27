@@ -4,7 +4,7 @@ VALUES('tore@admin.com', 'root');
 INSERT INTO lms_student(name, email, password, gender, birthdate, address, approved) 
 VALUES
 ('Ahmed Saad','Saad@tore.com','SaadPassword1','Male','02/19/1995','Padova', '1'),
-('Bahrami Sepide','Sepide@tore.com','SepidePassword1','Female','02/19/1995','Padova','1');
+('Bahrami Sepide','Sepide@tore.com','SepidePassword1','Female','02/19/1995','Padova','1'),
 ('Hansen Marit Fredrikke','Hansen.MaritFredrikke@tore.com','MaritPassword1','Female','02/19/1995','Padova','1'),		
 ('Rao Abdul Moeed','Rao.AbdulMoeed@tore.com','MoeedPassword1','Male','02/19/1995','Padova','1'),			
 ('Rehman Abdul','Rehman.Abdul@tore.com','AbdulPassword1','Male','02/19/1995','Padova','1'),		
