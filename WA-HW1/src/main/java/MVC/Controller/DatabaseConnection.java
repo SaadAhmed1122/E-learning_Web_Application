@@ -13,7 +13,7 @@ public class DatabaseConnection {
         // Database Connection
 
         Class.forName("org.postgresql.Driver");
-        Connection con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/LMS","postgres", "8891");
+        Connection con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/LMS","postgres", "root");
         return con;
     }
 }
