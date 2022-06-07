@@ -35,6 +35,7 @@ Follownig Teachnology we are using in our project.
 **Please change the Postgres username and password in "Database Connection" file before running the project according to your own system username and password.**
 
 #Demo
+
 ![Alt text](assets/Login Screen.png)
 
 <br>
