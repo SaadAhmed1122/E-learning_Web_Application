@@ -21,7 +21,7 @@ public class StudentRegistrationController extends HttpServlet {
         if(req.getParameter("btn_register")!= null){
             String name=req.getParameter("name");
             String email_id= req.getParameter("email");
-            String password = req.getParameter("password");
+            String password = req.getParameter("Password");
             String gender=null;
             if(req.getParameter("genderdropdown")!=null)
             {

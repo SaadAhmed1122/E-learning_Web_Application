@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="E-learning_project:war">
+    <output-path>$PROJECT_DIR$/WA-HW1/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>E-learning_project</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="E-learning_project-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="E-learning_project:war exploded" />
+    </root>
+  </artifact>
+</component>

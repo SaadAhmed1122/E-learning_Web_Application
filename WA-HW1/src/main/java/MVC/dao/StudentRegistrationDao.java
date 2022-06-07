@@ -17,7 +17,7 @@ public class StudentRegistrationDao {
         String address= registrationBean.getAddress();
         String date1= registrationBean.getBirthdate();
         String gender = registrationBean.getGender();
-        String password = registrationBean.getPassword();
+        String password1 = registrationBean.getPassword();
         boolean approval =false;
 
 
@@ -28,7 +28,7 @@ public class StudentRegistrationDao {
             PreparedStatement p = null;
 
             p= con.prepareStatement("insert into lms_student (name,email,password,gender,birthdate,address,approved)" +
-                    "values('"+name+"','" + email + "','" + password + "','" + gender + "','" + date1 + "','" + address + "','" + approval + "')");
+                    "values('"+name+"','" + email + "','" + password1 + "','" + gender + "','" + date1 + "','" + address + "','" + approval + "')");
 
 //            p.setString(1,name);
 //            p.setString(2,email);
