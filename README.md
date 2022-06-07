@@ -34,8 +34,8 @@ Follownig Teachnology we are using in our project.
 
 **Please change the Postgres username and password in "Database Connection" file before running the project according to your own system username and password.**
 
-#Demo
+#Preview
 
-![Alt text](assets/Login Screen.png)
+![alt text]([https://github.com/[saadahmed1122s]/[reponame]/blob/[branch]/image.jpg](https://github.com/SaadAhmed1122/E-learning_Web_Application/blob/master/assets/Login%20Screen.PNG?raw=true)
 
 <br>
