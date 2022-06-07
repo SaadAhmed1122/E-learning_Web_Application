@@ -36,6 +36,6 @@ Follownig Teachnology we are using in our project.
 
 #Preview
 
-![alt text]([https://github.com/[saadahmed1122s]/[reponame]/blob/[branch]/image.jpg](https://github.com/SaadAhmed1122/E-learning_Web_Application/blob/master/assets/Login%20Screen.PNG?raw=true)
+![alt text]([https://github.com/SaadAhmed1122/E-learning_Web_Application/blob/master/assets/Login%20Screen.PNG?raw=true)
 
 <br>
