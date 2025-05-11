@@ -36,6 +36,10 @@ Follownig Teachnology we are using in our project.
 
 ## Preview
 
+# Workflow Diagram
+
+![alt text](https://github.com/SaadAhmed1122/E-learning_Web_Application/blob/master/assets/diagram.png?raw=true)
+
 #Login Screen
 
 ![alt text](https://github.com/SaadAhmed1122/E-learning_Web_Application/blob/master/assets/Login%20Screen.PNG?raw=true)
